@@ -4,7 +4,7 @@
 <head>
   <link rel="stylesheet" href="css/style.css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<title>商品詳細試作</title>
+<title>カート完了試作</title>
 <style>
 </style>
 <script type="text/javascript">
@@ -32,29 +32,13 @@
         </div>
       </nav>
 
-      <div class="box">
-        <div class="box-img">
-          <img src="../img/ゲーミングキーボード1.png" class="img">
+      <div class = "end">
+        <div class = "text">
+        <h1>ありがとうございます<br>
+            注文を確定しました</h1>
         </div>
-          <div class="box-text">
-            <h1>商品1</h1>
-            <p>参考価格：￥30,000<br>
-               セール特価：￥28,900<br>
-               OFF：￥1,100<br>
-              <br>
-              
-               商品詳細
-               <br>
-               <br>
-               メーカー<br>
-               ブランド<br>
-            </p>
-       
-
-            <button class="btn btn-warning btn-lg text-dark" type="button" onclick="location.href='../ka-to/ka-to.php'">カートに入れる</button>
-          </div>
-      </div>
-      
-
-
-      <button onclick="location.href='URL'">サンプル</button>
+        <div class="btn">
+            <button class="btn btn-warning btn-lg text-dark" type="button" onclick="location.href='itiran.php'">次へ</button>
+        </div>
+     </div>
+        

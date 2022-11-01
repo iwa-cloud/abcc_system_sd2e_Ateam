@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <title>カート完了試作</title>
 <style>
