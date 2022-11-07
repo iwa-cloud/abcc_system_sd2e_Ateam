@@ -1,7 +1,10 @@
 <?php
 class DBManager{
     private function dbConnect(){
-        $pdo = new PDO('mysql:host=localhost;dbname=webdb;charset=utf8','webuser','abccsd2');
+        $dsn = 'mysql:host=mysql207.phy.lolipop.lan;dbname=LAA1418438-gamingsite;charset=utf8';
+        $user = 'LAA1418438';
+        $password = 'gahaha182';
+        $pdo = new PDO($dsn, $user, $password);
 
         return $pdo;
     }
@@ -55,6 +58,17 @@ class DBManager{
     public function getAllTweet(){
         $pdo = $this->dbConnect();
         $sql = "SELECT * FROM tweet_tbl";
+
+        $ps = $pdo->query($sql);
+        $ps->execute();
+    
+        $result = $ps->fetchAll();
+        return $result;
+    }
+
+    public function getDevices(){
+        $pdo = $this->dbConnect();
+        $sql = "SELECT device_name, default_price, evaluation_value FROM device_information";
 
         $ps = $pdo->query($sql);
         $ps->execute();

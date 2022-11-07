@@ -37,3 +37,8 @@ body {
   display: inline-block;
   vertical-align: middle;
 }
+
+.itiran-card-size{
+    height:350px;
+    width:350px;
+}
