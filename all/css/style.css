@@ -38,7 +38,17 @@ body {
   vertical-align: middle;
 }
 
-.itiran-card-size{
+.itiran-photo-size{
     height:350px;
     width:350px;
+}
+
+.itiran-card-margin{
+    margin-left: 10px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+.itiran-card-size{
+    height: 400px;
+    width: 480px;
 }

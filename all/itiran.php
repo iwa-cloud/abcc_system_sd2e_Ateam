@@ -9,16 +9,31 @@
 </head>
 
 <body>
+
   <?php
   require_once '../DBManager.php';
   $dbmng = new DBManager();
-  $result = $dbmng->getDevices();
-  $names = [];
-  foreach($name , )
+  $deviceNamesAll = $dbmng->getDeviceNames();
+  $devicePricesAll = $dbmng->getDevicePrices();
+  $deviceNamesArr;
+  $devicePriceArr;
+  $i = 0;
+
+  //index番号で指定できるように配列に格納
+  foreach ($deviceNamesAll as $row) {
+    $deviceNamesArr[$i] = $row['device_name'];
+    $i++;
+  }
+  $i = 0;
+  foreach ($devicePricesAll as $row) {
+    $devicePriceArr[$i] = $row['default_price'];
+    $i++;
+  }
   ?>
+  
   <nav class="navbar navbar-expand navbar-dark" style="background: #232f3e;margin-bottom:30px;height:auto;" aria-label="2 番目のナビゲーション バーの例">
     <div class="container-fluid">
-      <img src="../img/rogo.png"  width="80" height="30" class="img-fluid">
+      <img src="./img/rogo.png"  width="80" height="30" class="img-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="ナビゲーションを切り替える">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -37,101 +52,210 @@
 
   <div class="container-fluid">
   <div class="row">
-    <div class="col-4">
-      <div class="card">
-        <a href="syosai.php">
-          <img class="card-img-top itiran-card-size" src="./img/ゲーミングキーボード1.png">
+    <div class="col-4 itiran-card-margin">
+      <div class="card itiran-card-size">
+        <a href="./syosai.php">
+          <?php
+          //データベースにある商品情報のidを指定している
+          session_start();
+          $_SESSION['syosai'] = 1;
+          ?>
+          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングキーボード1.png">
           <div class="card-body">
-            <p class="card-title">キーボード1</p>
-            <p class="text-warning">30,000</p>
+            <p class="card-title">
+              <?php
+              echo $deviceNamesArr[0];
+              ?>
+            </p>
+            <p class="text-warning">
+              <?php
+              echo $devicePriceArr[0];
+              ?>
+            </p>
           </div>
         </a>
       </div>
     </div>
-    <div class="col-4">
-      <div class="card">
-        <a href="https://www.youtube.com/">
+    <div class="col-4 itiran-card-margin">
+      <div class="card itiran-card-size">
+        <a href="./syosai.php">
+          <?php
+          session_start();
+          $_SESSION['syosai'] = 2;
+          ?>
           <img class="card-img-top itiran-card-size" src="./img/ゲーミングキーボード2.png">
           <div class="card-body">
-            <p class="card-title">キーボード２</p>
-            <p class="text-warning">30,000</p>
+            <p class="card-title">
+              <?php
+              echo $deviceNamesArr[1];
+              ?>
+            </p>
+            <p class="text-warning">
+              <?php
+              echo $devicePriceArr[1];
+              ?>
+            </p>
           </div>
         </a>
       </div>
     </div>
-    <div class="col-4">
-      <div class="card">
-        <a href="https://www.youtube.com/">
+    <div class="col-4 itiran-card-margin">
+      <div class="card itiran-card-size">
+        <a href="./syosai.php">
+          <?php
+          session_start();
+          $_SESSION['syosai'] = 3;
+          ?>
           <img class="card-img-top itiran-card-size" src="./img/ゲーミングキーボード3.png">
           <div class="card-body">
-            <p class="card-title">キーボード３</p>
-            <p class="text-warning">30,000</p>
+            <p class="card-title">
+              <?php
+              echo $deviceNamesArr[2];
+              ?>
+            </p>
+            <p class="text-warning">
+              <?php
+              echo $devicePriceArr[2];
+              ?>
+            </p>
           </div>
         </a>
       </div>
     </div>
-    <div class="col-4">
-      <div class="card">
-        <a href="https://www.youtube.com/">
+    <div class="col-4 itiran-card-margin">
+      <div class="card itiran-card-size">
+        <a href="./syosai.php">
+          <?php
+          session_start();
+          $_SESSION['syosai'] = 4;
+          ?>
           <img class="card-img-top itiran-card-size" src="./img/ゲーミングヘッドフォン1.png">
           <div class="card-body">
-            <p class="card-title">ヘッドフォン1</p>
-            <p class="text-warning">30,000</p>
+            <p class="card-title">
+              <?php
+              echo $deviceNamesArr[3];
+              ?>
+            </p>
+            <p class="text-warning">
+              <?php
+              echo $devicePriceArr[3];
+              ?>
+            </p>
           </div>
         </a>
       </div>
     </div>
-    <div class="col-4">
-      <div class="card">
-        <a href="https://www.youtube.com/">
+    <div class="col-4 itiran-card-margin">
+      <div class="card itiran-card-size">
+        <a href="./syosai.php">
+          <?php
+          session_start();
+          $_SESSION['syosai'] = 5;
+          ?>
           <img class="card-img-top itiran-card-size" src="./img/ゲーミングヘッドフォン2.png">
           <div class="card-body">
-            <p class="card-title">ヘッドフォン2</p>
-            <p class="text-warning">30,000</p>
+            <p class="card-title">
+              <?php
+              echo $deviceNamesArr[4];
+              ?>
+            </p>
+            <p class="text-warning">
+              <?php
+              echo $devicePriceArr[4];
+              ?>
+            </p>
           </div>
         </a>
       </div>
     </div>
-    <div class="col-4">
-      <div class="card">
-        <a href="https://www.youtube.com/">
+    <div class="col-4 itiran-card-margin">
+      <div class="card itiran-card-size">
+        <a href="./syosai.php">
+          <?php
+          session_start();
+          $_SESSION['syosai'] = 6;
+          ?>
           <img class="card-img-top itiran-card-size" src="./img/ゲーミングヘッドフォン3.png">
           <div class="card-body">
-            <p class="card-title">ヘッドフォン3</p>
-            <p class="text-warning">30,000</p>
+            <p class="card-title">
+              <?php
+              echo $deviceNamesArr[5];
+              ?>
+            </p>
+            <p class="text-warning">
+              <?php
+              echo $devicePriceArr[5];
+              ?>
+            </p>
           </div>
         </a>
       </div>
     </div>
-    <div class="col-4">
-      <div class="card">
-        <a href="https://www.youtube.com/">
+    <div class="col-4 itiran-card-margin">
+      <div class="card itiran-card-size">
+        <a href="./syosai.php">
+          <?php
+          session_start();
+          $_SESSION['syosai'] = 7;
+          ?>
           <img class="card-img-top itiran-card-size" src="./img/ゲーミングマウス1.png">
           <div class="card-body">
-            <p class="card-title">マウス1</p>
-            <p class="text-warning">30,000</p>
+            <p class="card-title">
+              <?php
+              echo $deviceNamesArr[6];
+              ?>
+            </p>
+            <p class="text-warning">
+              <?php
+              echo $devicePriceArr[6];
+              ?>
+            </p>
           </div>
         </a>
       </div>
     </div>
-    <div class="col-4">
-      <div class="card">
-        <a href="https://www.youtube.com/">
+    <div class="col-4 itiran-card-margin">
+      <div class="card itiran-card-size">
+        <a href="./syosai.php">
+          <?php
+          session_start();
+          $_SESSION['syosai'] = 8;
+          ?>
           <img class="card-img-top itiran-card-size" src="./img/ゲーミングマウス2.png">
           <div class="card-body">
-            <p class="card-title">マウス2</p>
-            <p class="text-warning">30,000</p>
+            <p class="card-title">
+              <?php
+              echo $deviceNamesArr[7];
+              ?>
+            </p>
+            <p class="text-warning">
+              <?php
+              echo $devicePriceArr[7];
+              ?>
+            </p>
           </div>
         </a>
       </div>
     </div>
-    <div class="col-4">
-      <div class="card">
-        <a href="https://www.youtube.com/">
+    <div class="col-4 itiran-card-margin">
+      <div class="card itiran-card-size">
+        <a href="./syosai.php">
+          <?php
+          session_start();
+          $_SESSION['syosai'] = 9;
+          ?>
           <img class="card-img-top itiran-card-size" src="./img/ゲーミングマウス3.png">
           <div class="card-body">
-            <p class="card-title">マウス3</p>
-            <p class="text-warning">30,000</p>
+            <p class="card-title">
+              <?php
+              echo $deviceNamesArr[8];
+              ?>
+            </p>
+            <p class="text-warning">
+              <?php
+              echo $devicePriceArr[8];
+              ?>
+            </p>
           </div>
         </a>
       </div>
