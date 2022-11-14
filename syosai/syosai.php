@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html>
 
 <head>
@@ -14,7 +17,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
-    
+   <?php
+   $_SESSION['syosai'] = "syosai";
+   ?>
+   <?php
+   session_start();
+   $syosai=$_SESSION['syosai'];
+   ?>  
     <nav class="navbar navbar-expand navbar-dark" style="background: #232f3e;" aria-label="2 番目のナビゲーション バーの例">
         <div class="container-fluid">
           <img src="../img/rogo.png"  width="80" height="30" class="img-fluid">
