@@ -34,6 +34,17 @@ class DBManager{
         return $result;
     }
 
+    public function getDeviceEvalution(){
+        $pdo = $this->dbConnect();
+        $sql = "SELECT evaluation_value FROM device_information";
+
+        $ps = $pdo->query($sql);
+        $ps->execute();
+    
+        $result = $ps->fetchAll();
+        return $result;
+    }
+
     // public function getUserTblByName($getid,$getpass){
     //     $result = "";
     //     $pdo = $this->dbConnect();
