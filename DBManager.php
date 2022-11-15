@@ -34,9 +34,22 @@ class DBManager{
         return $result;
     }
 
-    public function getDeviceEvalution(){
+    // 商品テーブルから評価値を取得
+    public function getDeviceEvaluationValue(){
         $pdo = $this->dbConnect();
         $sql = "SELECT evaluation_value FROM device_information";
+
+        $ps = $pdo->query($sql);
+        $ps->execute();
+    
+        $result = $ps->fetchAll();
+        return $result;
+    }
+
+    //商品テーブルから評価数を取得
+    public function getDeviceEvaluationNumber(){
+        $pdo = $this->dbConnect();
+        $sql = "SELECT number_of_evaluation FROM device_information";
 
         $ps = $pdo->query($sql);
         $ps->execute();

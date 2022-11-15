@@ -15,10 +15,12 @@
   $dbmng = new DBManager();
   $deviceNamesAll = $dbmng->getDeviceNames();
   $devicePricesAll = $dbmng->getDevicePrices();
-  $deviceEvalutionAll = $dbmng->getDeviceEvalution();
+  $deviceEvaluationValueAll = $dbmng->getDeviceEvaluationValue();
+  $deviceEvaluationNumberAll = $dbmng->getDeviceEvaluationNumber();
   $deviceNamesArr;
   $devicePriceArr;
-  $deviceEvalutionArr;
+  $deviceEvaluationValueArr;
+  $deviceEvaluationNumberArr;
   $i = 0;
 
   //index番号で指定できるように配列に格納
@@ -28,12 +30,17 @@
   }
   $i = 0;
   foreach ($devicePricesAll as $row) {
-    $devicePriceArr[$i] = "￥".$row['default_price'];
+    $devicePriceArr[$i] = "￥".number_format($row['default_price']);
     $i++;
   }
   $i = 0;
-  foreach ($deviceEvalutionAll as $row) {
-    $deviceEvalutionArr[$i] = $row['evaluation_value'];
+  foreach ($deviceEvaluationValueAll as $row) {
+    $deviceEvaluationValueArr[$i] = $row['evaluation_value'];
+    $i++;
+  }
+  $i = 0;
+  foreach ($deviceEvaluationNumberAll as $row) {
+    $deviceEvaluationNumberArr[$i] = number_format($row['number_of_evaluation']);
     $i++;
   }
   ?>
@@ -77,7 +84,8 @@
           </a>
             <p>
               <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvalutionArr[0].'"></span>';
+                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[0].'"></span>';
+                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[0].'</span>';
               ?>
             </p>
           <a href="./syosai.php" style="text-decoration:none;">
@@ -107,7 +115,8 @@
         </a>
             <p>
               <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvalutionArr[1].'"></span>';
+                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[1].'"></span>';
+                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[1].'</span>';
               ?>
             </p>
             <a href="./syosai.php" style="text-decoration:none;">
@@ -137,7 +146,8 @@
             </a>
             <p>
               <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvalutionArr[2].'"></span>';
+                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[2].'"></span>';
+                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[2].'</span>';
               ?>
             </p>
             <a href="./syosai.php" style="text-decoration:none;">
@@ -167,7 +177,8 @@
             </a>
             <p>
               <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvalutionArr[3].'"></span>';
+                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[3].'"></span>';
+                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[3].'</span>';
               ?>
             </p>
             <a href="./syosai.php" style="text-decoration:none;">
@@ -197,7 +208,8 @@
             </a>
             <p>
               <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvalutionArr[4].'"></span>';
+                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[4].'"></span>';
+                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[4].'</span>';
               ?>
             </p>
             <a href="./syosai.php" style="text-decoration:none;">
@@ -227,7 +239,8 @@
             </a>
             <p>
               <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvalutionArr[5].'"></span>';
+                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[5].'"></span>';
+                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[5].'</span>';
               ?>
             </p>
             <a href="./syosai.php" style="text-decoration:none;">
@@ -257,7 +270,8 @@
             </a>
             <p>
               <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvalutionArr[6].'"></span>';
+                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[6].'"></span>';
+                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[6].'</span>';
               ?>
             </p>
             <a href="./syosai.php" style="text-decoration:none;">
@@ -287,7 +301,8 @@
             </a>
             <p>
               <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvalutionArr[7].'"></span>';
+                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[7].'"></span>';
+                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[7].'</span>';
               ?>
             </p>
             <a href="./syosai.php" style="text-decoration:none;">
@@ -317,7 +332,8 @@
             </a>
             <p>
               <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvalutionArr[8].'"></span>';
+                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[8].'"></span>';
+                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[8].'</span>';
               ?>
             </p>
             <a href="./syosai.php" style="text-decoration:none;">
