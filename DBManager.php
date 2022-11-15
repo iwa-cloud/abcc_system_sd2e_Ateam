@@ -59,12 +59,23 @@ class DBManager{
     }
 
     //ログイン時にユーザーを探す
-    public function userSearch(){
+    public function userSearch($mail, $pass){
         $pdo = $this->dbConnect();
-        $sql = "SELECT * FROM user_tbl WHERE id = ? AND pass = ?";
+        $sql = "SELECT * FROM user WHERE e_mail = ? AND password = ?";
         $ps = $pdo->prepare($sql);
-        $ps->bindValue(1, $_POST['uid'], PDO::PARAM_INT);
-        $ps->bindValue(2, $_POST['psw'], PDO::PARAM_STR);
+        $ps->bindValue(1, $mail, PDO::PARAM_STR);
+        $ps->bindValue(2, $pass, PDO::PARAM_STR);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
+
+    //商品idから商品の情報を取得
+    public function deviceSearch($id){
+        $pdo = $this->dbConnect();
+        $sql = "SELECT * FROM user WHERE device_id = ?";
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $id, PDO::PARAM_INT);
         $ps->execute();
         $result = $ps->fetchAll();
         return $result;

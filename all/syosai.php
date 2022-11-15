@@ -17,13 +17,13 @@ session_start();
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
-<?php
-   $_SESSION['syosai'] = "syosai";
-   ?>
-   <?php
-   session_start();
-   $syosai=$_SESSION['syosai'];
-   ?>  
+  <?php
+  session_start();
+  $syosai = $_SESSION['syosai'];
+  require_once '../DBManager.php';
+  $dbmng = new DBManager();
+  $deviceInfomation = $dbmng->deviceSearch($syosai);
+  ?>  
     <nav class="navbar navbar-expand navbar-dark" style="background: #232f3e;" aria-label="2 番目のナビゲーション バーの例">
         <div class="container-fluid">
           <img src="img/rogo.png"  width="80" height="30" class="img-fluid">
@@ -46,8 +46,15 @@ session_start();
           <img src="img/ゲーミングキーボード1.png" class="img">
         </div>
           <div class="box-text">
-            <h1>商品1</h1>
-            <p>参考価格：￥30,000<br>
+            <h1>
+              <?php
+                $deviceInfomation['device_name'];
+              ?>
+            </h1>
+            <p>参考価格：
+              <?php
+                $price = "￥".number_format($row['default_price']);
+              ?><br>
                セール特価：￥28,900<br>
                OFF：￥1,100<br>
               <br>
