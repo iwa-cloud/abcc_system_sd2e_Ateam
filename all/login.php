@@ -20,7 +20,7 @@
     <nav class="navbar navbar-expand navbar-dark" style="background: #232f3e;" aria-label="2 番目のナビゲーション バーの例">
         <div class="container-fluid">
           <img src="../img/rogo.png"  width="80" height="30" class="img-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="ナビゲーションを切り替える">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02"       aria-controls="navbarsExample02" aria-expanded="false" aria-label="ナビゲーションを切り替える">
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>

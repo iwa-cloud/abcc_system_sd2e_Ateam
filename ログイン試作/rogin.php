@@ -76,8 +76,8 @@
     <div class="row mt-5">
         <div class="offset-md-3 col-md-6">
             <h1 class="text-center mb-5">ログイン</h1>
-            <div class="row">
-                <div class="col-md-12 mt-1 mb-1 alert-danger text-center" id="errorMsg">
+                <div class="row">
+                    <div class="col-md-12 mt-1 mb-1 alert-danger text-center" id="errorMsg">
 
                 </div>
             </div>
