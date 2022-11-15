@@ -19,54 +19,52 @@
     
     <nav class="navbar navbar-expand navbar-dark" style="background: #232f3e;" aria-label="2 番目のナビゲーション バーの例">
         <div class="container-fluid">
-          <img src="../img/rogo.png"  width="80" height="30" class="img-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="ナビゲーションを切り替える">
+            <img src="./img/rogo.png"  width="80" height="30" class="img-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="ナビゲーションを切り替える">
             <span class="navbar-toggler-icon"></span>
-          </button>
+            </button>
         </div>
-      </nav>
+    </nav>
 <div id="maindiv" class="container">
     <div class="row mt-5">
         <div class="offset-md-3 col-md-6">
             <h1 class="text-center mb-5">ログイン</h1>
             <div class="row">
                 <div class="col-md-12 mt-1 mb-1 alert-danger text-center" id="errorMsg">
-
                 </div>
             </div>
+            <form action="logincheck.php" method="post">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" name="mail">
+                            <label for="lastname">メールアドレス</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" name="pas">
+                            <label for="lastname">パスワード</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mt-3">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-dark btn-lg text-white" type="button" onclick="registClick()">ログイン</button>
+                        </div>
+                    </div>
+                </div>
                 <?php
-                    session_start();
-                        if(isset($_SESSION["mail"]) == true &&
-                            isset($_SESSION["pas"]) == true ){
-                                header('Location: ../商品一覧試作/商品一覧試作.html');
-                        }
+                session_start();
+                    if(isset($_SESSION["mail"]) == true &&
+                        isset($_SESSION["pas"]) == true ){
+                            header('Location: ./itiran.php');
+                    }
                 ?>
-                <form action="logincheck.php" method="post">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" name="mail">
-                        <label for="lastname">メールアドレス</label>
-
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 mt-2">
-                    <div class="form-floating">
-                        <input type="password" class="form-control" name="pas">
-                        <label for="lastname">パスワード</label>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 mt-3">
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-dark btn-lg text-white" type="button" onclick="registClick()">ログイン</button>
-                    </div>
-                </div>
-            </div>
-                </form>
+            </form>
         </div>
     </div>
 </div>

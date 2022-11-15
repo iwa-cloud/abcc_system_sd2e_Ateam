@@ -58,6 +58,18 @@ class DBManager{
         return $result;
     }
 
+    //ログイン時にユーザーを探す
+    public function userSearch(){
+        $pdo = $this->dbConnect();
+        $sql = "SELECT * FROM user_tbl WHERE id = ? AND pass = ?";
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $_POST['uid'], PDO::PARAM_INT);
+        $ps->bindValue(2, $_POST['psw'], PDO::PARAM_STR);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
+
     // public function getUserTblByName($getid,$getpass){
     //     $result = "";
     //     $pdo = $this->dbConnect();
