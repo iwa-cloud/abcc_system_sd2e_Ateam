@@ -22,16 +22,20 @@ session_start();
     // session_start();
     // $syosai = $_SESSION['syosai'];
     $syosai = $_POST['device'];
-    echo "<h1>".$syosai."</h1>";
+    // echo "<h1>".$syosai."</h1>";
     require_once '../DBManager.php';
     $dbmng = new DBManager();
     $deviceInfomation = $dbmng->deviceSearch($syosai);
-    $photo;$device_name;$default_price;$sale_price;
+    $photo;$device_name;$default_price;$sale_price;$manufacturer;$brand;$connection_method;$recommended_use;
     foreach($deviceInfomation as $row){
         $photo = $row['photo'];
         $device_name = $row['device_name'];
         $default_price = $row['default_price'];
         $sale_price = $row['sale_price'];
+        $manufacturer = $row['manufacturer'];
+        $brand = $row['brand'];
+        $connection_method = $row['connection_method'];
+        $recommended_use = $row['recommended_use'];
     }
     ?>
     <nav class="navbar navbar-expand navbar-dark" style="background: #232f3e;" aria-label="2 番目のナビゲーション バーの例">
@@ -86,8 +90,22 @@ session_start();
                 ?>
                 <br>
                 <br>
-                メーカー<br>
-                ブランド<br>
+                メーカー:
+                <?php
+                echo $manufacturer;
+                ?><br>
+                ブランド:
+                <?php
+                echo $brand;
+                ?><br>
+                接続方法:
+                <?php
+                echo $connection_method;
+                ?><br>
+                商品推奨用途:
+                <?php
+                echo $recommended_use;
+                ?><br>
             </p>
 
 

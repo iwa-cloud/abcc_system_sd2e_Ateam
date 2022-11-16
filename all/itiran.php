@@ -119,9 +119,9 @@
                   echo $devicePriceArr[1];
                   ?>
                 </p>
+              </a>
+            </form>
           </div>
-          </a>
-          </form>
         </div>
       </div>
       <div class="col-4">
@@ -147,9 +147,9 @@
                   echo $devicePriceArr[2];
                   ?>
                 </p>
+              </a>
+            </form>
           </div>
-          </a>
-          </form>
         </div>
       </div>
       <div class="col-4">
@@ -175,9 +175,9 @@
                   echo $devicePriceArr[3];
                   ?>
                 </p>
+              </a>
+            </form>
           </div>
-          </a>
-          </form>
         </div>
       </div>
       <div class="col-4">
@@ -203,9 +203,9 @@
                   echo $devicePriceArr[4];
                   ?>
                 </p>
+              </a>
+            </form>
           </div>
-          </a>
-          </form>
         </div>
       </div>
       <div class="col-4">
@@ -231,9 +231,9 @@
                   echo $devicePriceArr[5];
                   ?>
                 </p>
+              </a>
+            </form>
           </div>
-          </a>
-          </form>
         </div>
       </div>
       <div class="col-4">
@@ -259,9 +259,9 @@
                   echo $devicePriceArr[6];
                   ?>
                 </p>
+              </a>
+            </form>
           </div>
-          </a>
-          </form>
         </div>
       </div>
       <div class="col-4">
@@ -287,9 +287,9 @@
                   echo $devicePriceArr[7];
                   ?>
                 </p>
+              </a>
+            </form>
           </div>
-          </a>
-          </form>
         </div>
       </div>
       <div class="col-4">
@@ -315,9 +315,9 @@
                   echo $devicePriceArr[8];
                   ?>
                 </p>
+              </a>
+            </form>
           </div>
-          </a>
-          </form>
         </div>
       </div>
     </div>
