@@ -73,7 +73,7 @@ class DBManager{
     //商品idから商品の情報を取得
     public function deviceSearch($id){
         $pdo = $this->dbConnect();
-        $sql = "SELECT * FROM user WHERE device_id = ?";
+        $sql = "SELECT * FROM device_information WHERE device_id = ?";
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1, $id, PDO::PARAM_INT);
         $ps->execute();

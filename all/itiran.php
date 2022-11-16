@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>商品一覧試作</title>
-<link rel="stylesheet" href="./css/style.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>商品一覧試作</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body>
 
   <?php
+  // session_start();
   require_once '../DBManager.php';
   $dbmng = new DBManager();
   $deviceNamesAll = $dbmng->getDeviceNames();
@@ -30,7 +32,7 @@
   }
   $i = 0;
   foreach ($devicePricesAll as $row) {
-    $devicePriceArr[$i] = "￥".number_format($row['default_price']);
+    $devicePriceArr[$i] = "￥" . number_format($row['default_price']);
     $i++;
   }
   $i = 0;
@@ -44,10 +46,10 @@
     $i++;
   }
   ?>
-  
+
   <nav class="navbar navbar-expand navbar-dark" style="background: #232f3e;margin-bottom:30px;height:auto;" aria-label="2 番目のナビゲーション バーの例">
     <div class="container-fluid">
-      <img src="./img/rogo.png"  width="80" height="30" class="img-fluid">
+      <img src="./img/rogo.png" width="80" height="30" class="img-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="ナビゲーションを切り替える">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -57,7 +59,7 @@
         </ul>
         <form role="search">
           <a class="nav-link" href="../ka-to/ka-to.php">
-            <img src="./img/カート.png"  width="80" height="30" class="img-fluid">
+            <img src="./img/カート.png" width="80" height="30" class="img-fluid">
           </a>
         </form>
       </div>
@@ -65,289 +67,261 @@
   </nav>
 
   <div class="container-fluid">
-  <div class="row">
-    <div class="col-4">
-      <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-        <?php
-        //データベースにある商品情報のidを指定している
-        session_start();
-        $_SESSION['syosai'] = 1;
-        ?>
-        <img class="card-img-top itiran-photo-size" src="./img/ゲーミングキーボード1.png">
-        <div class="card-body">
-          <a href="./syosai.php">
-            <p class="card-title text-height" style="flex-grow: 1;">
-              <?php
-                echo $deviceNamesArr[0];
-              ?>
-            </p>
+    <div class="row">
+      <div class="col-4">
+        <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
+          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングキーボード1.png">
+          <div class="card-body">
+            <form action="./syosai.php" method="post" name="a_form1">
+              <input type="hidden" name="device" value="1">
+              <a href="javascript:a_form1.submit();" style="text-decoration:none;">
+                <p class="card-title text-height" style="flex-grow: 1;">
+                  <?php
+                  echo $deviceNamesArr[0];
+                  ?>
+                </p>
+                <p>
+                  <?php
+                  echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValueArr[0] . '"></span>';
+                  echo '<span style="margin-left: 10px;">' . $deviceEvaluationNumberArr[0] . '</span>';
+                  ?>
+                </p>
+                <p class="text-danger">
+                  <?php
+                  echo $devicePriceArr[0];
+                  ?>
+                </p>
+              </a>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
+          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングキーボード2.png">
+          <div class="card-body">
+            <form action="./syosai.php" method="post" name="a_form2">
+              <input type="hidden" name="device" value="2">
+              <a href="javascript:a_form2.submit();" style="text-decoration:none;">
+                <p class="card-title text-height">
+                  <?php
+                  echo $deviceNamesArr[1];
+                  ?>
+                </p>
+                <p>
+                  <?php
+                  echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValueArr[1] . '"></span>';
+                  echo '<span style="margin-left: 10px;">' . $deviceEvaluationNumberArr[1] . '</span>';
+                  ?>
+                </p>
+                <p class="text-danger">
+                  <?php
+                  echo $devicePriceArr[1];
+                  ?>
+                </p>
+          </div>
           </a>
-            <p>
-              <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[0].'"></span>';
-                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[0].'</span>';
-              ?>
-            </p>
-          <a href="./syosai.php" style="text-decoration:none;">
-            <p class="text-danger">
-              <?php
-                echo $devicePriceArr[0];
-              ?>
-            </p>
+          </form>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
+          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングキーボード3.png">
+          <div class="card-body">
+            <form action="./syosai.php" method="post" name="a_form3">
+              <input type="hidden" name="device" value="3">
+              <a href="javascript:a_form3.submit();" style="text-decoration:none;">
+                <p class="card-title text-height">
+                  <?php
+                  echo $deviceNamesArr[2];
+                  ?>
+                </p>
+                <p>
+                  <?php
+                  echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValueArr[2] . '"></span>';
+                  echo '<span style="margin-left: 10px;">' . $deviceEvaluationNumberArr[2] . '</span>';
+                  ?>
+                </p>
+                <p class="text-danger">
+                  <?php
+                  echo $devicePriceArr[2];
+                  ?>
+                </p>
+          </div>
           </a>
+          </form>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
+          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングヘッドフォン1.png">
+          <div class="card-body">
+            <form action="./syosai.php" method="post" name="a_form4">
+              <input type="hidden" name="device" value="4">
+              <a href="javascript:a_form4.submit();" style="text-decoration:none;">
+                <p class="card-title text-height">
+                  <?php
+                  echo $deviceNamesArr[3];
+                  ?>
+                </p>
+                <p>
+                  <?php
+                  echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValueArr[3] . '"></span>';
+                  echo '<span style="margin-left: 10px;">' . $deviceEvaluationNumberArr[3] . '</span>';
+                  ?>
+                </p>
+                <p class="text-danger">
+                  <?php
+                  echo $devicePriceArr[3];
+                  ?>
+                </p>
+          </div>
+          </a>
+          </form>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
+          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングヘッドフォン2.png">
+          <div class="card-body">
+            <form action="./syosai.php" method="post" name="a_form5">
+              <input type="hidden" name="device" value="5">
+              <a href="javascript:a_form5.submit();" style="text-decoration:none;">
+                <p class="card-title text-height">
+                  <?php
+                  echo $deviceNamesArr[4];
+                  ?>
+                </p>
+                <p>
+                  <?php
+                  echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValueArr[4] . '"></span>';
+                  echo '<span style="margin-left: 10px;">' . $deviceEvaluationNumberArr[4] . '</span>';
+                  ?>
+                </p>
+                <p class="text-danger">
+                  <?php
+                  echo $devicePriceArr[4];
+                  ?>
+                </p>
+          </div>
+          </a>
+          </form>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
+          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングヘッドフォン3.png">
+          <div class="card-body">
+            <form action="./syosai.php" method="post" name="a_form6">
+              <input type="hidden" name="device" value="6">
+              <a href="javascript:a_form6.submit();" style="text-decoration:none;">
+                <p class="card-title text-height">
+                  <?php
+                  echo $deviceNamesArr[5];
+                  ?>
+                </p>
+                <p>
+                  <?php
+                  echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValueArr[5] . '"></span>';
+                  echo '<span style="margin-left: 10px;">' . $deviceEvaluationNumberArr[5] . '</span>';
+                  ?>
+                </p>
+                <p class="text-danger">
+                  <?php
+                  echo $devicePriceArr[5];
+                  ?>
+                </p>
+          </div>
+          </a>
+          </form>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
+          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングマウス1.png">
+          <div class="card-body">
+            <form action="./syosai.php" method="post" name="a_form7">
+              <input type="hidden" name="device" value="7">
+              <a href="javascript:a_form7.submit();" style="text-decoration:none;">
+                <p class="card-title text-height">
+                  <?php
+                  echo $deviceNamesArr[6];
+                  ?>
+                </p>
+                <p>
+                  <?php
+                  echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValueArr[6] . '"></span>';
+                  echo '<span style="margin-left: 10px;">' . $deviceEvaluationNumberArr[6] . '</span>';
+                  ?>
+                </p>
+                <p class="text-danger">
+                  <?php
+                  echo $devicePriceArr[6];
+                  ?>
+                </p>
+          </div>
+          </a>
+          </form>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
+          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングマウス2.png">
+          <div class="card-body">
+            <form action="./syosai.php" method="post" name="a_form8">
+              <input type="hidden" name="device" value="8">
+              <a href="javascript:a_form8.submit();" style="text-decoration:none;">
+                <p class="card-title text-height">
+                  <?php
+                  echo $deviceNamesArr[7];
+                  ?>
+                </p>
+                <p>
+                  <?php
+                  echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValueArr[7] . '"></span>';
+                  echo '<span style="margin-left: 10px;">' . $deviceEvaluationNumberArr[7] . '</span>';
+                  ?>
+                </p>
+                <p class="text-danger">
+                  <?php
+                  echo $devicePriceArr[7];
+                  ?>
+                </p>
+          </div>
+          </a>
+          </form>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
+          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングマウス3.png">
+          <div class="card-body">
+            <form action="./syosai.php" method="post" name="a_form9">
+              <input type="hidden" name="device" value="9">
+              <a href="javascript:a_form9.submit();" style="text-decoration:none;">
+                <p class="card-title text-height">
+                  <?php
+                  echo $deviceNamesArr[8];
+                  ?>
+                </p>
+                <p>
+                  <?php
+                  echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValueArr[8] . '"></span>';
+                  echo '<span style="margin-left: 10px;">' . $deviceEvaluationNumberArr[8] . '</span>';
+                  ?>
+                </p>
+                <p class="text-danger">
+                  <?php
+                  echo $devicePriceArr[8];
+                  ?>
+                </p>
+          </div>
+          </a>
+          </form>
         </div>
       </div>
     </div>
-    <div class="col-4">
-      <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-        <a href="./syosai.php">
-        <?php
-          session_start();
-          $_SESSION['syosai'] = 2;
-        ?>
-        <img class="card-img-top itiran-photo-size" src="./img/ゲーミングキーボード2.png">
-        <div class="card-body">
-          <p class="card-title text-height">
-            <?php
-              echo $deviceNamesArr[1];
-            ?>
-          </p>
-        </a>
-            <p>
-              <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[1].'"></span>';
-                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[1].'</span>';
-              ?>
-            </p>
-            <a href="./syosai.php" style="text-decoration:none;">
-            <p class="text-danger">
-              <?php
-                echo $devicePriceArr[1];
-              ?>
-            </p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-        <a href="./syosai.php">
-          <?php
-            session_start();
-            $_SESSION['syosai'] = 3;
-          ?>
-          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングキーボード3.png">
-          <div class="card-body">
-            <p class="card-title text-height">
-              <?php
-                echo $deviceNamesArr[2];
-              ?>
-            </p>
-            </a>
-            <p>
-              <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[2].'"></span>';
-                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[2].'</span>';
-              ?>
-            </p>
-            <a href="./syosai.php" style="text-decoration:none;">
-            <p class="text-danger">
-              <?php
-                echo $devicePriceArr[2];
-              ?>
-            </p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-        <a href="./syosai.php">
-          <?php
-            session_start();
-            $_SESSION['syosai'] = 4;
-          ?>
-          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングヘッドフォン1.png">
-          <div class="card-body">
-            <p class="card-title text-height">
-              <?php
-                echo $deviceNamesArr[3];
-              ?>
-            </p>
-            </a>
-            <p>
-              <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[3].'"></span>';
-                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[3].'</span>';
-              ?>
-            </p>
-            <a href="./syosai.php" style="text-decoration:none;">
-            <p class="text-danger">
-              <?php
-                echo $devicePriceArr[3];
-              ?>
-            </p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-        <a href="./syosai.php">
-          <?php
-            session_start();
-            $_SESSION['syosai'] = 5;
-          ?>
-          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングヘッドフォン2.png">
-          <div class="card-body">
-            <p class="card-title text-height">
-              <?php
-                echo $deviceNamesArr[4];
-              ?>
-            </p>
-            </a>
-            <p>
-              <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[4].'"></span>';
-                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[4].'</span>';
-              ?>
-            </p>
-            <a href="./syosai.php" style="text-decoration:none;">
-            <p class="text-danger">
-              <?php
-                echo $devicePriceArr[4];
-              ?>
-            </p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-        <a href="./syosai.php">
-          <?php
-            session_start();
-            $_SESSION['syosai'] = 6;
-          ?>
-          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングヘッドフォン3.png">
-          <div class="card-body">
-            <p class="card-title text-height">
-              <?php
-                echo $deviceNamesArr[5];
-              ?>
-            </p>
-            </a>
-            <p>
-              <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[5].'"></span>';
-                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[5].'</span>';
-              ?>
-            </p>
-            <a href="./syosai.php" style="text-decoration:none;">
-            <p class="text-danger">
-              <?php
-                echo $devicePriceArr[5];
-              ?>
-            </p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-        <a href="./syosai.php">
-          <?php
-            session_start();
-            $_SESSION['syosai'] = 7;
-          ?>
-          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングマウス1.png">
-          <div class="card-body">
-            <p class="card-title text-height">
-              <?php
-                echo $deviceNamesArr[6];
-              ?>
-            </p>
-            </a>
-            <p>
-              <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[6].'"></span>';
-                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[6].'</span>';
-              ?>
-            </p>
-            <a href="./syosai.php" style="text-decoration:none;">
-            <p class="text-danger">
-              <?php
-                echo $devicePriceArr[6];
-              ?>
-            </p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-        <a href="./syosai.php">
-          <?php
-            session_start();
-            $_SESSION['syosai'] = 8;
-          ?>
-          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングマウス2.png">
-          <div class="card-body">
-            <p class="card-title text-height">
-              <?php
-                echo $deviceNamesArr[7];
-              ?>
-            </p>
-            </a>
-            <p>
-              <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[7].'"></span>';
-                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[7].'</span>';
-              ?>
-            </p>
-            <a href="./syosai.php" style="text-decoration:none;">
-            <p class="text-danger">
-              <?php
-                echo $devicePriceArr[7];
-              ?>
-            </p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-        <a href="./syosai.php">
-          <?php
-            session_start();
-            $_SESSION['syosai'] = 9;
-          ?>
-          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングマウス3.png">
-          <div class="card-body">
-            <p class="card-title text-height">
-              <?php
-                echo $deviceNamesArr[8];
-              ?>
-            </p>
-            </a>
-            <p>
-              <?php
-                echo '<span class="star5_rating" data-rate="'.$deviceEvaluationValueArr[8].'"></span>';
-                echo '<span style="margin-left: 10px;">'.$deviceEvaluationNumberArr[8].'</span>';
-              ?>
-            </p>
-            <a href="./syosai.php" style="text-decoration:none;">
-            <p class="text-danger">
-              <?php
-                echo $devicePriceArr[8];
-              ?>
-            </p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
+
 </html>
-      
