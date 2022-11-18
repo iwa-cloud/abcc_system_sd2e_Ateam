@@ -2,6 +2,7 @@
 <html>
 
 <head>
+<link rel="stylesheet" href="css/style.css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <title>カート試作</title>
 <style>
@@ -43,6 +44,7 @@
     <div class="row">
       <div class="col-sm-4 col-xs-6">
         <div class="card">
+        <div class="card-box">
           <a href="syosai.php">
             <img class="card-img-top" src="./img/ゲーミングキーボード1.png">
             <div class="card-body">
@@ -55,6 +57,7 @@
   
       <div class="col-sm-4 col-xs-6">
         <div class="card">
+        <div class="card-box">
           <a href="../商品詳細試作/商品詳細試作.html">
             <img class="card-img-top" src="./img/ゲーミングヘッドフォン1.png">
             <div class="card-body">
@@ -67,6 +70,7 @@
   
       <div class="col-sm-4 col-xs-6">
         <div class="card">
+        <div class="card-box">
           <a href="../商品詳細試作/商品詳細試作.html">
             <img class="card-img-top" src="./img/ゲーミングマウス1.png">
             <div class="card-body">
