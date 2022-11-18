@@ -52,6 +52,7 @@
                 <p class="text-warning">30,000</p>
            </div>
           </a>
+          </div>
         </div>
       </div>
   
@@ -65,6 +66,7 @@
                 <p class="text-warning">8999</p>
            </div>
           </a>
+          </div>
         </div>
       </div>
   
@@ -78,6 +80,7 @@
                 <p class="text-warning">9980</p>
            </div>
           </a>
+        </div>
         </div>
       </div>
     </div>
