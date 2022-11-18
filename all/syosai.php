@@ -15,6 +15,7 @@ session_start();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -26,8 +27,17 @@ session_start();
     require_once '../DBManager.php';
     $dbmng = new DBManager();
     $deviceInfomation = $dbmng->deviceSearch($syosai);
-    $photo;$device_name;$default_price;$sale_price;$manufacturer;$brand;$connection_method;$recommended_use;
-    foreach($deviceInfomation as $row){
+    $photo;
+    $device_name;
+    $default_price;
+    $sale_price;
+    $manufacturer;
+    $brand;
+    $connection_method;
+    $recommended_use;
+    $deviceEvaluationValue;
+    $deviceEvaluationNumber;
+    foreach ($deviceInfomation as $row) {
         $photo = $row['photo'];
         $device_name = $row['device_name'];
         $default_price = $row['default_price'];
@@ -36,8 +46,11 @@ session_start();
         $brand = $row['brand'];
         $connection_method = $row['connection_method'];
         $recommended_use = $row['recommended_use'];
+        $deviceEvaluationValue = $row['evaluation_value'];
+        $deviceEvaluationNumber = $row['number_of_evaluation'];
     }
     ?>
+
     <nav class="navbar navbar-expand navbar-dark" style="background: #232f3e;" aria-label="2 番目のナビゲーション バーの例">
         <div class="container-fluid">
             <img src="img/rogo.png" width="80" height="30" class="img-fluid">
@@ -56,59 +69,79 @@ session_start();
     </nav>
 
     <div class="box">
-        <div class="box-img">
+        <div class="img-left">
             <?php
-            echo '<img src="img/'.$photo.'" class="img">';
+            echo '<img src="img/' . $photo . '" class="img-size">';
             ?>
         </div>
         <div class="box-text">
-            <h1>
+            <br>
+            <h2>
                 <?php
-                $device_name;
+                echo $device_name;
                 ?>
-            </h1>
+            </h2>
+            <p>
+                <?php
+                echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValue . '"></span>';
+                echo '<span style="margin-left: 10px;">' . number_format($deviceEvaluationNumber) . '</span>';
+                ?>
+            </p>
             <p>参考価格：
                 <?php
                 $default_priceStr = "￥" . number_format($default_price);
                 echo $default_priceStr;
-                ?><br>
+                ?>
+            </p>
+            <p>
                 セール特価：
                 <?php
                 $sale_priceStr = "￥" . number_format($sale_price);
                 echo $sale_priceStr;
-                ?><br>
+                ?>
+            </p>
+            <p>
                 OFF：
                 <?php
-                $priceStr = "￥".number_format($default_price - $sale_price);
+                $priceStr = "￥" . number_format($default_price - $sale_price);
                 echo $priceStr;
-                ?><br>
-                <br>
-
+                ?>
+            </p>
+            <br>
+            <p>
                 商品詳細
                 <?php
                 // echo '"￥".number_format($default_price - $sale_price)';
                 ?>
-                <br>
-                <br>
+            </p>
+            <p>
                 メーカー:
                 <?php
                 echo $manufacturer;
-                ?><br>
+                ?>
+            </p>
+            <p>
                 ブランド:
                 <?php
                 echo $brand;
-                ?><br>
+                ?>
+            </p>
+            <p>
                 接続方法:
                 <?php
                 echo $connection_method;
-                ?><br>
+                ?>
+            </p>
+            <p>
                 商品推奨用途:
                 <?php
                 echo $recommended_use;
-                ?><br>
+                ?>
             </p>
 
-
+            <form action="./ka-to.php" method="post">
+                <input type="submit" value="登録">
+            </form>
             <button class="btn btn-warning btn-lg text-dark" type="button" onclick="location.href='ka-to.php'">カートに入れる</button>
         </div>
     </div>
