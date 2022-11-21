@@ -52,7 +52,7 @@
                 <p class="text-warning">30,000</p>
            </div>
           </a>
-          </div>
+        </div>
         </div>
       </div>
   
