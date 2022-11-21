@@ -5,16 +5,16 @@ session_start();
 <html>
 
 <head>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title>カート試作</title>
-    <style>
-    </style>
-    <script type="text/javascript">
-    </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/style.css">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>カート試作</title>
+<style>
+</style>
+<script type="text/javascript">
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -138,6 +138,7 @@ session_start();
 
             <!-- <div class="col-sm-4 col-xs-6">
         <div class="card">
+        <div class="card-box">
           <a href="syosai.php">
             <img class="card-img-top" src="./img/ゲーミングキーボード1.png">
             <div class="card-body">
@@ -145,11 +146,13 @@ session_start();
               <p class="text-warning">30,000</p>
             </div>
           </a>
+          </div>
         </div>
       </div>
 
       <div class="col-sm-4 col-xs-6">
         <div class="card">
+        <div class="card-box">
           <a href="../商品詳細試作/商品詳細試作.html">
             <img class="card-img-top" src="./img/ゲーミングヘッドフォン1.png">
             <div class="card-body">
@@ -157,11 +160,13 @@ session_start();
               <p class="text-warning">8999</p>
             </div>
           </a>
+          </div>
         </div>
       </div>
 
       <div class="col-sm-4 col-xs-6">
         <div class="card">
+        <div class="card-box">
           <a href="../商品詳細試作/商品詳細試作.html">
             <img class="card-img-top" src="./img/ゲーミングマウス1.png">
             <div class="card-body">
@@ -170,13 +175,13 @@ session_start();
             </div>
           </a>
         </div>
-      </div> -->
-
         </div>
-        <div class="text-right">
-            <h2>合計金額:</h2>
-            <button class="btn btn-warning btn-lg text-dark" type="button" onclick="location.href='end.php'">購入を確定</button>
-        </div>
+      </div>
+    </div>
+<div class="text-right">
+    <h2>合計金額:</h2>
+    <button class="btn btn-warning btn-lg text-dark" type="button" onclick="location.href='end.php'">購入を確定</button>
+</div>
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
