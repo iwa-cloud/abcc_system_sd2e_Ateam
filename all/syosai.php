@@ -83,12 +83,8 @@ session_start();
             </h2>
             <p>
                 <?php
-                echo '<div class="row">';
-                    echo '<div class=".d-lg-none">' . $device_name. '</div>';
-                    echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValue . '"></span>';
-                    echo '<span style="margin-left: 10px;">' . number_format($deviceEvaluationNumber) . '</span>';
-                    echo '<div class=".d-none.d-lg-block">' . $device_name. '</div>';
-                echo '</div>';
+                echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValue . '"></span>';
+                echo '<span style="margin-left: 10px;">' . number_format($deviceEvaluationNumber) . '</span>';
                 ?>
             </p>
             <p>参考価格：
