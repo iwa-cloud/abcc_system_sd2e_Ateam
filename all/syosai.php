@@ -140,8 +140,13 @@ session_start();
             </p>
 
             <form action="./ka-to.php" method="post">
-                <input type="submit" value="登録">
+                <input type="hidden" name="device_id" value="
+                <?php
+                echo $syosai;
+                ?>
+                ">
+                <input class="btn btn-warning btn-lg text-dark" type="submit" value="カートに入れる">
             </form>
-            <button class="btn btn-warning btn-lg text-dark" type="button" onclick="location.href='ka-to.php'">カートに入れる</button>
+            <!-- <button class="btn btn-warning btn-lg text-dark" type="button" onclick="location.href='ka-to.php'">カートに入れる</button> -->
         </div>
     </div>

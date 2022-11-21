@@ -81,6 +81,16 @@ class DBManager{
         return $result;
     }
 
+    //商品の情報を全て取得
+    public function deviceSearchAll(){
+        $pdo = $this->dbConnect();
+        $sql = "SELECT * FROM device_information";
+        $ps = $pdo->prepare($sql);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
+
     // public function getUserTblByName($getid,$getpass){
     //     $result = "";
     //     $pdo = $this->dbConnect();
