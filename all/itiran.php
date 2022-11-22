@@ -32,7 +32,15 @@
   }
   $i = 0;
   foreach ($devicePricesAll as $row) {
-    $devicePriceArr[$i] = "￥" . number_format($row['default_price']);
+    $price;
+    $Dprice = $row['default_price'];
+    $Sprice = $row['sale_price'];
+    if ($Sprice == 0) {
+      $price = $Dprice;
+    } else {
+      $price = $Sprice;
+    }
+    $devicePriceArr[$i] = "￥" . number_format($price);
     $i++;
   }
   $i = 0;

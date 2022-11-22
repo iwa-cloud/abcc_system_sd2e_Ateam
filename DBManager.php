@@ -25,7 +25,7 @@ class DBManager{
     // 商品テーブルから参考価格を取得
     public function getDevicePrices(){
         $pdo = $this->dbConnect();
-        $sql = "SELECT default_price FROM device_information";
+        $sql = "SELECT default_price, sale_price FROM device_information";
 
         $ps = $pdo->query($sql);
         $ps->execute();
