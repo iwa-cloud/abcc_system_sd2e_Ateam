@@ -66,7 +66,7 @@
         <ul class="navbar-nav me-auto">
         </ul>
         <form role="search">
-          <a class="nav-link" href="../ka-to/ka-to.php">
+          <a class="nav-link" href="./ka-to.php">
             <img src="./img/カート.png" width="80" height="30" class="img-fluid">
           </a>
         </form>

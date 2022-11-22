@@ -1,3 +1,8 @@
+<?php
+session_start();
+unset($_SESSION['devices']);
+?>
+
 <!DOCTYPE html>
 <html>
 
