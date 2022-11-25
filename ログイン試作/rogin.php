@@ -71,7 +71,7 @@
         <?php
         require'DBManager.php';
         $dbmng = new DBManager();
-
+?>
 
     <div class="row mt-5">
         <div class="offset-md-3 col-md-6">
