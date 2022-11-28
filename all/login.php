@@ -37,7 +37,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-floating">
-                            <input type="text" class="form-control" name="mail">
+                            <input type="text" class="form-control" name="mail"inputmode="numeric"
+                            minlength="0"
+                            maxlength="40">
                             <label for="lastname">メールアドレス</label>
                         </div>
                     </div>
@@ -45,7 +47,9 @@
                 <div class="row">
                     <div class="col-md-12 mt-2">
                         <div class="form-floating">
-                            <input type="password" class="form-control" name="pas">
+                            <input type="password" class="form-control" name="pas"inputmode="numeric"
+                            minlength="0"
+                            maxlength="20">
                             <label for="lastname">パスワード</label>
                         </div>
                     </div>
