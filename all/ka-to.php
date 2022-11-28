@@ -60,8 +60,12 @@ session_start();
         // $_SESSION['devices'][count($_SESSION['devices'])] = 2;
         // echo "<h1>".$_SESSION['devices'][count($_SESSION['devices'])]."</h1>";
     }else if(isset($_POST['deleteDevice'])){
-      unset($_SESSION['devices'][$_POST['deleteDevice']]);
-      header('Location: ./ka-to.php');
+      $index = array_search($_POST['deleteDevice'],$_SESSION['devices']);
+      unset($_SESSION['devices'][$index]);
+      $_SESSION['devices'] = array_values($_SESSION['devices']);
+      $_POST['deleteDevice'] = null;
+    //   $_POST['device_id'] = null;
+    //   header('Location: ./ka-to.php');
     }
     ?>
 
@@ -119,87 +123,21 @@ session_start();
                 echo '<span class="text-danger">';
                 echo "￥" . number_format($price);
                 echo '</span>';
-                echo '<span class="text-danger">';
+                echo '</a>';
+                echo '</form>';
+                echo '</div>';
+                echo '</div>';echo '<span class="text-danger">';
                 echo '<form action="./ka-to.php" method="post">';
                 echo '<input type="hidden" name="deleteDevice" value="';
-                echo $device_id[$_SESSION['devices'][$i]];
+                echo $_SESSION['devices'][$i];
                 echo '">';
                 echo '<input class="btn btn-warning btn-lg text-dark" type="submit" value="削除">';
                 echo '</form>';
                 echo '</span>';
-                echo '</a>';
-                echo '</form>';
-                echo '</div>';
-                echo '</div>';
                 echo '</div>';
                 $gokei += $price;
             }
             ?>
-
-            <!-- <div class="col-4">
-        <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-          <img class="card-img-top itiran-photo-size" src="./img/ゲーミングキーボード1.png">
-          <div class="card-body">
-            <form action="./syosai.php" method="post" name="a_form1">
-              <input type="hidden" name="device" value="1">
-              <a href="javascript:a_form1.submit();" style="text-decoration:none;">
-                <p class="card-title text-height" style="flex-grow: 1;">
-
-                </p>
-                <p>
-
-                </p>
-                <p class="text-danger">
-
-                </p>
-              </a>
-            </form>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col-sm-4 col-xs-6">
-        <div class="card">
-          <div class="card-box">
-            <a href="syosai.php">
-              <img class="card-img-top" src="./img/ゲーミングキーボード1.png">
-              <div class="card-body">
-                <p class="card-title">Logicool G ロジクールゲーミングキーボードG913 TKL</p>
-                <p class="text-warning">30,000</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-4 col-xs-6">
-        <div class="card">
-          <div class="card-box">
-            <a href="../商品詳細試作/商品詳細試作.html">
-              <img class="card-img-top" src="./img/ゲーミングヘッドフォン1.png">
-              <div class="card-body">
-                <p class="card-title">SOMIC ゲーミングヘッドセット 猫耳ヘッドホン ワイヤレスヘッドセット オーバーイヤーヘッドホン マイク付き 50ｍｍ ドラ...</p>
-                <p class="text-warning">8999</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-4 col-xs-6">
-        <div class="card">
-          <div class="card-box">
-            <a href="../商品詳細試作/商品詳細試作.html">
-              <img class="card-img-top" src="./img/ゲーミングマウス1.png">
-              <div class="card-body">
-                <p class="card-title">Razer Basilisk Ultimate</p>
-                <p class="text-warning">9980</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div> -->
         </div>
         <div class="text-right">
             <h2>合計金額:
