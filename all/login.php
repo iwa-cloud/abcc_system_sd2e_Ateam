@@ -39,6 +39,7 @@
                         <div class="form-floating">
                             <input type="text" class="form-control"
                             pattern="^[0-9A-Za-z@]+$"
+                            value="" maxlength="5" required
                             name="mail"inputmode="numeric"
                             minlength="0"
                             maxlength="40">
@@ -51,6 +52,7 @@
                         <div class="form-floating">
                             <input type="password" class="form-control" 
                             pattern="^[0-9A-Za-z]+$"
+                            value="" maxlength="5" required
                             name="pas"inputmode="numeric"
                             minlength="0"
                             maxlength="20">
