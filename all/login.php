@@ -47,7 +47,9 @@
                 <div class="row">
                     <div class="col-md-12 mt-2">
                         <div class="form-floating">
-                            <input type="password" class="form-control" name="pas"inputmode="numeric"
+                            <input type="password" class="form-control" 
+                            pattern="^[0-9A-Za-z]+$"
+                            name="pas"inputmode="numeric"
                             minlength="0"
                             maxlength="20">
                             <label for="lastname">パスワード</label>
