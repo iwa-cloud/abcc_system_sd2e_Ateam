@@ -1,17 +1,18 @@
 <?php
 session_start();
+unset($_SESSION['user_id']);
 require_once '../DBManager.php';
 $dbmng = new DBManager();
-$searchArray = $dbmng->userSearch($_POST['mail'],$_POST['pas']);
+$user = $dbmng->userSearch($_POST['mail'],$_POST['pas']);
 // $_SESSION['array'] = $searchArray;
 
-if($searchArray==null){
+if($user==null){
     header('Location: login.php');
 }else{
-    foreach($searchArray as $row){
-        $_SESSION['mail'] = $row['id'];
-        $_SESSION['pas'] = $row['pass'];
+    foreach($user as $row){
+        $_SESSION['user_id'] = $row['user_id'];
     }
+    // $_SESSION['user_id'] = $user;
     header('Location: ./itiran.php');
 }
 ?>

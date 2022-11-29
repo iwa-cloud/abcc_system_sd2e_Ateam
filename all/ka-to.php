@@ -53,19 +53,24 @@ session_start();
     }
 
     // unset($_SESSION['devices']);
+
+    //商品詳細画面から遷移してきた場合
     if (isset($_POST['device_id']) && !isset($_POST['deleteDevice'])) {
+
         //index番号を格納
         $_SESSION['devices'][count($_SESSION['devices'])] = $_POST['device_id'] - 1;
         $_POST['device_id'] = null;
         // $_SESSION['devices'][count($_SESSION['devices'])] = 2;
         // echo "<h1>".$_SESSION['devices'][count($_SESSION['devices'])]."</h1>";
-    }else if(isset($_POST['deleteDevice'])){
-      $index = array_search($_POST['deleteDevice'],$_SESSION['devices']);
-      unset($_SESSION['devices'][$index]);
-      $_SESSION['devices'] = array_values($_SESSION['devices']);
-      $_POST['deleteDevice'] = null;
-    //   $_POST['device_id'] = null;
-    //   header('Location: ./ka-to.php');
+
+        //カート画面の商品の削除ボタンを押した場合
+    } else if (isset($_POST['deleteDevice'])) {
+        $index = array_search($_POST['deleteDevice'], $_SESSION['devices']);
+        unset($_SESSION['devices'][$index]);
+        $_SESSION['devices'] = array_values($_SESSION['devices']);
+        $_POST['deleteDevice'] = null;
+        //   $_POST['device_id'] = null;
+        //   header('Location: ./ka-to.php');
     }
     ?>
 
@@ -126,7 +131,9 @@ session_start();
                 echo '</a>';
                 echo '</form>';
                 echo '</div>';
-                echo '</div>';echo '<span class="text-danger">';
+                echo '</div>';
+                echo '<span class="text-danger">';
+                echo "数量：";
                 echo '<form action="./ka-to.php" method="post">';
                 echo '<input type="hidden" name="deleteDevice" value="';
                 echo $_SESSION['devices'][$i];
@@ -139,7 +146,7 @@ session_start();
             }
             ?>
         </div>
-        <div class="text-right">
+        <div class="text-right" style="margin-top: 10px;">
             <h2>合計金額:
                 <?php
                 echo "￥" . number_format($gokei);

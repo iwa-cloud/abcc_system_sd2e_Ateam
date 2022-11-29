@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +15,6 @@
 <body>
 
     <?php
-    // session_start();
     require_once '../DBManager.php';
     $dbmng = new DBManager();
     $deviceNamesAll = $dbmng->getDeviceNames();
@@ -24,6 +26,12 @@
     $deviceEvaluationValueArr;
     $deviceEvaluationNumberArr;
     $i = 0;
+
+    //ユーザーidからカートidを取得
+    $cart_id = $dbmng->cartSearch($_SESSION['user_id']);
+    foreach($cart_id as $row){
+        $_SESSION['cart_id'] = $row['cart_id'];
+    }
 
     //index番号で指定できるように配列に格納
     foreach ($deviceNamesAll as $row) {
@@ -76,6 +84,7 @@
         </div>
     </nav>
 
+    
     <div class="container-fluid">
         <div class="row">
             <div class="col-4">
@@ -88,6 +97,9 @@
                                 <p class="card-title text-height" style="flex-grow: 1;">
                                     <?php
                                     echo $deviceNamesArr[0];
+                                    
+                                    //確認用
+                                    // echo $_SESSION['cart_id'];
                                     ?>
                                 </p>
                                 <p>
