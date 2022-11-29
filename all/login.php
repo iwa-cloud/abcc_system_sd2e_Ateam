@@ -37,7 +37,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-floating">
-                            <input type="text" class="form-control" name="mail"inputmode="numeric"
+                            <input type="text" class="form-control"
+                            pattern="^[0-9A-Za-z@]+$"
+                            name="mail"inputmode="numeric"
                             minlength="0"
                             maxlength="40">
                             <label for="lastname">メールアドレス</label>
@@ -53,7 +55,6 @@
                             minlength="0"
                             maxlength="20">
                             <label for="lastname">パスワード</label>
-                        </div>
                     </div>
                 </div>
                 <div class="row">
