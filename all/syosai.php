@@ -71,84 +71,89 @@ session_start();
     </nav>
 
     <div class="box">
-        <div class="img-left">
-            <?php
-            echo '<img src="img/' . $photo . '" class="img-size">';
-            ?>
-        </div>
-        <div class="box-text">
-            <br>
-            <h2>
+        <span class="yoko">
+            <div class="img-left">
                 <?php
-                echo $device_name;
+                echo '<img src="img/' . $photo . '" class="img-size">';
                 ?>
-            </h2>
-            <p>
-                <?php
-                echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValue . '"></span>';
-                echo '<span style="margin-left: 10px;">' . number_format($deviceEvaluationNumber) . '</span>';
-                ?>
-            </p>
-            <p>参考価格：
-                <?php
-                $default_priceStr = "￥" . number_format($default_price);
-                echo $default_priceStr;
-                ?>
-            </p>
-            <p>
-                セール特価：
-                <?php
-                $sale_priceStr = "￥" . number_format($sale_price);
-                echo $sale_priceStr;
-                ?>
-            </p>
-            <p>
-                OFF：
-                <?php
-                $priceStr = "￥" . number_format($default_price - $sale_price);
-                echo $priceStr;
-                ?>
-            </p>
-            <br>
-            <p>
-                商品詳細
-                <?php
-                // echo '"￥".number_format($default_price - $sale_price)';
-                ?>
-            </p>
-            <p>
-                メーカー:
-                <?php
-                echo $manufacturer;
-                ?>
-            </p>
-            <p>
-                ブランド:
-                <?php
-                echo $brand;
-                ?>
-            </p>
-            <p>
-                接続方法:
-                <?php
-                echo $connection_method;
-                ?>
-            </p>
-            <p>
-                商品推奨用途:
-                <?php
-                echo $recommended_use;
-                ?>
-            </p>
+            </div>
+        </span>
+        <span class="yoko">
+            <div class="box-text">
+                <br>
+                <h2>
+                    <?php
+                    echo $device_name;
+                    ?>
+                </h2>
+                <p>
+                    <?php
+                    echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValue . '"></span>';
+                    echo '<span style="margin-left: 10px;">' . number_format($deviceEvaluationNumber) . '</span>';
+                    ?>
+                </p>
+                <p>参考価格：
+                    <?php
+                    $default_priceStr = "￥" . number_format($default_price);
+                    echo $default_priceStr;
+                    ?>
+                </p>
+                <p>
+                    セール特価：
+                    <?php
+                    $sale_priceStr = "￥" . number_format($sale_price);
+                    echo $sale_priceStr;
+                    ?>
+                </p>
+                <p>
+                    OFF：
+                    <?php
+                    $priceStr = "￥" . number_format($default_price - $sale_price);
+                    echo $priceStr;
+                    ?>
+                </p>
+                <br>
+                <p>
+                    商品詳細
+                    <?php
+                    // echo '"￥".number_format($default_price - $sale_price)';
+                    ?>
+                </p>
+                <p>
+                    メーカー:
+                    <?php
+                    echo $manufacturer;
+                    ?>
+                </p>
+                <p>
+                    ブランド:
+                    <?php
+                    echo $brand;
+                    ?>
+                </p>
+                <p>
+                    接続方法:
+                    <?php
+                    echo $connection_method;
+                    ?>
+                </p>
+                <p>
+                    商品推奨用途:
+                    <?php
+                    echo $recommended_use;
+                    ?>
+                </p>
 
-            <form action="./ka-to.php" method="post">
-                <input type="hidden" name="device_id" value="
+                <form action="./ka-to.php" method="post">
+                    <input type="hidden" name="device_id" value="
                 <?php
                 echo $syosai;
                 ?>
                 ">
-                <input class="btn btn-warning btn-lg text-dark" type="submit" value="カートに入れる">
-            </form>
-            <!-- <button class="btn btn-warning btn-lg text-dark" type="button" onclick="location.href='ka-to.php'">カートに入れる</button> -->
-        </div>
+                    <input class="btn btn-warning btn-lg text-dark" type="submit" value="カートに入れる">
+                </form>
+                <!-- <button class="btn btn-warning btn-lg text-dark" type="button" onclick="location.href='ka-to.php'">カートに入れる</button> -->
+            </div>
+        </span>
+
     </div>

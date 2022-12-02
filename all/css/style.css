@@ -39,6 +39,10 @@
     /* margin-bottom: 10px; */
 }
 
+.yoko {
+    display: flex;
+    /* justify-content: space-between; */
+}
 
 /* 商品詳細 */
 .box-img{

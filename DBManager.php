@@ -234,6 +234,18 @@ class DBManager
         // return $result;
     }
 
+    //カートidからカートの中身を取得
+    public function cartGetDevice($cart_id)
+    {
+        $pdo = $this->dbConnect();
+        $sql = "SELECT device_id FROM cart_details WHERE cart_id = ?";
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $cart_id, PDO::PARAM_STR);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
+
     //テスト用
     public function test()
     {

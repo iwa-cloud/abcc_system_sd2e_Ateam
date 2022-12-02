@@ -26,12 +26,7 @@ session_start();
     $deviceEvaluationValueArr;
     $deviceEvaluationNumberArr;
     $i = 0;
-
-    //ユーザーidからカートidを取得
-    $cart_id = $dbmng->cartSearch($_SESSION['user_id']);
-    foreach($cart_id as $row){
-        $_SESSION['cart_id'] = $row['cart_id'];
-    }
+    $cart_id = $_SESSION['cart_id'];
 
     //index番号で指定できるように配列に格納
     foreach ($deviceNamesAll as $row) {
