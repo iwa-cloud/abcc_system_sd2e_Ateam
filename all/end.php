@@ -13,6 +13,7 @@ if (count($_SESSION['devices']) != 0) {
     $cart_id_str = str_pad($cart_id, 7, 0, STR_PAD_LEFT);
     // echo "<p>" . $cart_id_str . "</p>";
     $dbmng->cartIdInsert($_SESSION['user_id'], $cart_id_str);
+    $_SESSION['cart_id'] = $cart_id_str;
 }
 ?>
 
