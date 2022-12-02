@@ -38,7 +38,7 @@
                     <div class="col-md-12">
                         <div class="form-floating">
                             <input type="text" class="form-control"
-                            pattern="^[0-9A-Za-z@]+$"
+                            
                             value="" required
                             name="mail"inputmode="numeric"
                             minlength="0"
