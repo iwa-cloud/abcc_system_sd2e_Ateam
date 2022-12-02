@@ -56,22 +56,87 @@ session_start();
 
     //商品詳細画面から遷移してきた場合
     if (isset($_POST['device_id']) && !isset($_POST['deleteDevice'])) {
+        //indexを格納
+        $device_id_num = (int)$_POST['device_id'] - 1;
+        //セッションの中に同じ商品idがあるか確認
+        // $flag = false;
+        $seArr = [];
+        if (count($_SESSION['devices']) != 0) {
+            $seArr = $_SESSION['devices'];
+        }
+        // $flag = in_array($device_id_num, $seArr, true);
+        // $str = $device_id_num;
+        // echo strlen($device_id_num) . "\n";
+        // echo gettype($device_id_num) . "\n";
+        // echo $str . "\n";
+        // echo "<p>yeah" . $seArr[count($seArr) - 1] . "count(" . count($_SESSION['devices']) . ") " . $device_id_num . " " . $flag . " " . $_SESSION['cart_id'] . "yeah</p>";
+        // var_dump($_SESSION['devices']);
 
-        //index番号を格納
-        $_SESSION['devices'][count($_SESSION['devices'])] = $_POST['device_id'] - 1;
+        //初回
+        if (count($seArr) == 0) {
+            //初めて
+            $str1 = $device_id_num + 1;
+            $str2 = $_SESSION['cart_id'];
+            // echo "<p>" . $str1 . " " . $str2 . "</p>";
+            $hoge = $dbmng->deviceInsert($str1, $str2);
+            // $hoge2 = $dbmng->test();
+            // echo "<p>値段" . $hoge2[0]['default_price'] . "</p>";
+
+            //index番号を格納
+            $seArr[0] = $device_id_num;
+            // echo "<p>first</p>";
+        } else {
+            //初めてその商品を追加したか
+            if (in_array($device_id_num, $seArr, true) === false) {
+                //初めての商品
+                $str1 = $device_id_num + 1;
+                $str2 = $_SESSION['cart_id'];
+                // echo "<p>" . $str1 . " " . $str2 . "</p>";
+                $hoge = $dbmng->deviceInsert($str1, $str2);
+
+                //index番号を格納
+                $seArr[count($seArr)] = $device_id_num;
+                // echo "<p>false</p>";
+            } else {
+                //二回目以降
+                $str1 = $device_id_num + 1;
+                $str2 = $_SESSION['cart_id'];
+                $hoge = $dbmng->devicePuls($str1, $str2);
+                // echo "<p>true</p>";
+            }
+        }
+
+
         $_POST['device_id'] = null;
+
+        // echo "<p>yeah" . $seArr . " " . "yeah</p>";
+        // var_dump($seArr);
         // $_SESSION['devices'][count($_SESSION['devices'])] = 2;
         // echo "<h1>".$_SESSION['devices'][count($_SESSION['devices'])]."</h1>";
+
+        $_SESSION['devices'] = $seArr;
 
         //カート画面の商品の削除ボタンを押した場合
     } else if (isset($_POST['deleteDevice'])) {
         $index = array_search($_POST['deleteDevice'], $_SESSION['devices']);
+        $dbmng->deviceMinus($_POST['deleteDevice'] + 1, $_SESSION['cart_id']);
         unset($_SESSION['devices'][$index]);
         $_SESSION['devices'] = array_values($_SESSION['devices']);
         $_POST['deleteDevice'] = null;
         //   $_POST['device_id'] = null;
         //   header('Location: ./ka-to.php');
     }
+
+    //該当するカートの情報を配列に格納
+    $cartDeviceArr = $dbmng->cartDeviceSearch($_SESSION['cart_id']);
+    $cart_device_id;
+    $cart_quantity;
+    //indexではない
+    foreach ($cartDeviceArr as $row) {
+        $cart_device_id[] = $row['device_id'] - 1;
+        $cart_quantity[] = $row['quantity'];
+    }
+
     ?>
 
     <nav class="navbar navbar-expand navbar-dark" style="background: #232f3e;" aria-label="2 番目のナビゲーション バーの例">
@@ -104,26 +169,29 @@ session_start();
     <div name="maindiv" class="container-fluid">
         <div class="row">
             <?php
-            for ($i = 0; $i < count($_SESSION['devices']); $i++) {
+            for ($i = 0; $i < count($cart_device_id); $i++) {
+
+                //販売価格をpriceに入れる
                 $price;
-                if ($sale_prices[$_SESSION['devices'][$i]] == 0) {
-                    $price = $default_prices[$_SESSION['devices'][$i]];
+                if ($sale_prices[$cart_device_id[$i]] == 0) {
+                    $price = $default_prices[$cart_device_id[$i]];
                 } else {
-                    $price = $sale_prices[$_SESSION['devices'][$i]];
+                    $price = $sale_prices[$cart_device_id[$i]];
                 }
+
                 echo '<div class="col-sm-4 col-xs-6">';
                 echo '<div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">';
-                echo '<img class="card-img-top itiran-photo-size" src="./img/' . $photos[$_SESSION['devices'][$i]] . '">';
+                echo '<img class="card-img-top itiran-photo-size" src="./img/' . $photos[$cart_device_id[$i]] . '">';
                 echo '<div class="card-body">';
-                echo '<form action="./syosai.php" method="post" name="a_form' . ($_SESSION['devices'][$i] + 1) . '">';
-                echo '<input type="hidden" name="device" value="' . ($_SESSION['devices'][$i] + 1) . '">';
-                echo '<a href="javascript:a_form' . ($_SESSION['devices'][$i] + 1) . '.submit();" style="text-decoration:none;">';
+                echo '<form action="./syosai.php" method="post" name="a_form' . ($cart_device_id[$i] + 1) . '">';
+                echo '<input type="hidden" name="device" value="' . ($cart_device_id[$i] + 1) . '">';
+                echo '<a href="javascript:a_form' . ($cart_device_id[$i] + 1) . '.submit();" style="text-decoration:none;">';
                 echo '<p class="card-title text-height" style="flex-grow: 1;">';
-                echo $device_names[$_SESSION['devices'][$i]];
+                echo $device_names[$cart_device_id[$i]];
                 echo '</p>';
                 echo '<p>';
-                echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValues[$_SESSION['devices'][$i]] . '"></span>';
-                echo '<span style="margin-left: 10px;">' . number_format($deviceEvaluationNumbers[$_SESSION['devices'][$i]]) . '</span>';
+                echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValues[$cart_device_id[$i]] . '"></span>';
+                echo '<span style="margin-left: 10px;">' . number_format($deviceEvaluationNumbers[$cart_device_id[$i]]) . '</span>';
                 echo '</p>';
                 echo '<span class="text-danger">';
                 echo "￥" . number_format($price);
@@ -132,17 +200,22 @@ session_start();
                 echo '</form>';
                 echo '</div>';
                 echo '</div>';
-                echo '<span class="text-danger">';
+                echo '<span class="text-black">';
                 echo "数量：";
+                // echo $cart_quantity[$i];
+                echo $hoge = $dbmng->deviceQuantitySearch($cart_device_id[$i] + 1,$_SESSION['cart_id']);
+                echo '</span>';
+                echo '<span>';
                 echo '<form action="./ka-to.php" method="post">';
                 echo '<input type="hidden" name="deleteDevice" value="';
-                echo $_SESSION['devices'][$i];
+                echo $cart_device_id[$i];
                 echo '">';
                 echo '<input class="btn btn-warning btn-lg text-dark" type="submit" value="削除">';
                 echo '</form>';
                 echo '</span>';
                 echo '</div>';
-                $gokei += $price;
+
+                $gokei += $price * $hoge;
             }
             ?>
         </div>

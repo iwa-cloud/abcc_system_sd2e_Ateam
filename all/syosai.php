@@ -22,7 +22,7 @@ session_start();
     <?php
     // session_start();
     // $syosai = $_SESSION['syosai'];
-    $syosai = $_POST['device'];
+    $syosai = (int)$_POST['device'];
     // echo "<h1>".$syosai."</h1>";
     require_once '../DBManager.php';
     $dbmng = new DBManager();

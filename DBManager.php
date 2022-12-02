@@ -104,9 +104,21 @@ class DBManager
     public function cartSearch($user_id)
     {
         $pdo = $this->dbConnect();
-        $sql = "SELECT cart_id FROM cart WHERE user_id = ?";
+        $sql = "SELECT cart_id FROM cart WHERE user_id = ? AND buy_date = '0000-00-00'";
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1, $user_id, PDO::PARAM_STR);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
+
+    //商品idから商品の数量を取得
+    public function cartDeviceSearch($cart_id)
+    {
+        $pdo = $this->dbConnect();
+        $sql = "SELECT device_id ,quantity FROM cart_details WHERE cart_id = ?";
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $cart_id, PDO::PARAM_STR);
         $ps->execute();
         $result = $ps->fetchAll();
         return $result;
@@ -130,12 +142,12 @@ class DBManager
     }
 
     //カートの商品の数量を増やす
-    public function devicePuls($devicd_id, $cart_id)
+    public function devicePuls($device_id, $cart_id)
     {
         $pdo = $this->dbConnect();
-        $sql = "UPDATE cart_details SET quantity = quantity + 1 WHERE devicd_id = ? AND cart_id = ?;";
+        $sql = "UPDATE cart_details SET quantity = quantity + 1 WHERE device_id = ? AND cart_id = ?";
         $ps = $pdo->prepare($sql);
-        $ps->bindValue(1, $devicd_id, PDO::PARAM_STR);
+        $ps->bindValue(1, $device_id, PDO::PARAM_INT);
         $ps->bindValue(2, $cart_id, PDO::PARAM_STR);
         $ps->execute();
         // $result = $ps->fetchAll();
@@ -145,33 +157,34 @@ class DBManager
     //カートの商品のデータを挿入する
     public function deviceInsert($device_id, $cart_id)
     {
+        // $cart_id = "'" . $cart_id . "'";
         $pdo = $this->dbConnect();
-        $sql = "INSERT INTO cart_details VALUES(? ,? ,?);";
+        //INSERT INTO cart_details (cart_id, device_id, quantity) VALUES ('0000007',1,1);
+        $sql = "INSERT INTO cart_details (cart_id, device_id, quantity) VALUES (?,?,1)";
         $ps = $pdo->prepare($sql);
-        $ps->bindValue(1, $device_id, PDO::PARAM_STR);
-        $ps->bindValue(2, $cart_id, PDO::PARAM_STR);
-        $ps->bindValue(3, 1, PDO::PARAM_INT);
+        $ps->bindValue(1, $cart_id, PDO::PARAM_STR);
+        $ps->bindValue(2, $device_id, PDO::PARAM_INT);
         $ps->execute();
         // $result = $ps->fetchAll();
         // return $result;
     }
 
     //カートの商品の数量を減らす
-    public function deviceMinus($devicd_id, $cart_id)
+    public function deviceMinus($device_id, $cart_id)
     {
         $pdo = $this->dbConnect();
-        $quantity = $this->deviceQuantitySearch($devicd_id, $cart_id);
+        $quantity = $this->deviceQuantitySearch($device_id, $cart_id);
         if ($quantity > 1) {
-            $sql = "UPDATE cart_details SET quantity = quantity - 1 WHERE devicd_id = ? AND cart_id = ?;";
+            $sql = "UPDATE cart_details SET quantity = quantity - 1 WHERE device_id = ? AND cart_id = ?";
             $ps = $pdo->prepare($sql);
-            $ps->bindValue(1, $devicd_id, PDO::PARAM_STR);
+            $ps->bindValue(1, $device_id, PDO::PARAM_INT);
             $ps->bindValue(2, $cart_id, PDO::PARAM_STR);
             $ps->execute();
             // $result = $ps->fetchAll();
         } else {
-            $sql = "DELETE FROM cart_details WHERE devicd_id = ? AND cart_id = ?;";
+            $sql = "DELETE FROM cart_details WHERE device_id = ? AND cart_id = ?";
             $ps = $pdo->prepare($sql);
-            $ps->bindValue(1, $devicd_id, PDO::PARAM_STR);
+            $ps->bindValue(1, $device_id, PDO::PARAM_INT);
             $ps->bindValue(2, $cart_id, PDO::PARAM_STR);
             $ps->execute();
             // $result = $ps->fetchAll();
@@ -179,6 +192,58 @@ class DBManager
         // return $result;
     }
 
+    //購入日を上書きする
+    public function dateUpdate($user_id, $cart_id)
+    {
+        $pdo = $this->dbConnect();
+        $sql = "UPDATE cart SET buy_date = CURDATE() WHERE user_id = ? AND cart_id = ?";
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $user_id, PDO::PARAM_STR);
+        $ps->bindValue(2, $cart_id, PDO::PARAM_STR);
+        $ps->execute();
+        // $result = $ps->fetchAll();
+        // return $result;
+    }
+
+    //cart_idの最大値を取得
+    public function cartIdMaxSelect()
+    {
+        $pdo = $this->dbConnect();
+        // SELECT MAX(CAST(`cart_id` AS SIGNED)) FROM cart;
+        $sql = "SELECT MAX(CAST(`cart_id` AS SIGNED)) FROM cart";
+        $ps = $pdo->query($sql);
+        $ps->execute();
+        $ans = $ps->fetchAll();
+        $result = 0;
+        foreach ($ans as $row) {
+            $result = $row['MAX(CAST(`cart_id` AS SIGNED))'];
+        }
+        return $result;
+    }
+
+    //cartに新しいcart_idを挿入する
+    public function cartIdInsert($user_id, $cart_id)
+    {
+        $pdo = $this->dbConnect();
+        $sql = "INSERT INTO cart (cart_id, user_id, buy_date) VALUES (?,?,'0000-00-00')";
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1, $cart_id, PDO::PARAM_STR);
+        $ps->bindValue(2, $user_id, PDO::PARAM_STR);
+        $ps->execute();
+        // $result = $ps->fetchAll();
+        // return $result;
+    }
+
+    //テスト用
+    public function test()
+    {
+        $pdo = $this->dbConnect();
+        $sql = "SELECT default_price FROM device_information WHERE device_id = 1";
+        $ps = $pdo->query($sql);
+        $ps->execute();
+        $result = $ps->fetchAll();
+        return $result;
+    }
 
 
     // public function getUserTblByName($getid,$getpass){

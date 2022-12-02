@@ -1,6 +1,19 @@
 <?php
 session_start();
-unset($_SESSION['devices']);
+// var_dump($_SESSION['devices']);
+if (count($_SESSION['devices']) != 0) {
+    unset($_SESSION['devices']);
+    require_once '../DBManager.php';
+    $dbmng = new DBManager();
+    $dbmng->dateUpdate($_SESSION['user_id'], $_SESSION['cart_id']);
+    $cart_id = $dbmng->cartIdMaxSelect();
+    // echo "<p>" . $cart_id . "</p>";
+    $cart_id++;
+    // echo "<p>" . $cart_id . "</p>";
+    $cart_id_str = str_pad($cart_id, 7, 0, STR_PAD_LEFT);
+    // echo "<p>" . $cart_id_str . "</p>";
+    $dbmng->cartIdInsert($_SESSION['user_id'], $cart_id_str);
+}
 ?>
 
 <!DOCTYPE html>
