@@ -67,13 +67,18 @@ session_start();
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarsExample02">
-                <ul class="navbar-nav me-auto">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarsExample02">
+                <ul class="navbar-nav">
+                    <a class="nav-link" href="./logout.php">
+                        ログアウト
+                    </a>
                 </ul>
                 <form role="search">
+                    
                     <a class="nav-link" href="./ka-to.php">
                         <img src="./img/カート.png" width="80" height="30" class="img-fluid">
                     </a>
+                    
                 </form>
             </div>
         </div>
