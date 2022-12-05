@@ -111,8 +111,12 @@ session_start();
                 <p>
                     OFF：
                     <?php
-                    $priceStr = "￥" . number_format($default_price - $sale_price);
-                    echo $priceStr;
+                    if ($sale_price == 0) {
+                        echo "￥0";
+                    } else {
+                        $priceStr = "￥" . number_format($default_price - $sale_price);
+                        echo $priceStr;
+                    }
                     ?>
                 </p>
                 <br>
@@ -161,4 +165,5 @@ session_start();
 
     </div>
 </body>
+
 </html>
