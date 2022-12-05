@@ -73,15 +73,15 @@ session_start();
         </div>
     </nav>
 
-    <div class="box">
-        <span class="yoko">
+    <div class="box yoko" style="margin-bottom: 10%;">
+        <span>
             <div class="img-left">
                 <?php
                 echo '<img src="img/' . $photo . '" class="img-size">';
                 ?>
             </div>
         </span>
-        <span class="yoko">
+        <span style="width: 40%; margin-left:5%;">
             <div class="box-text">
                 <br>
                 <h2>
@@ -160,3 +160,5 @@ session_start();
         </span>
 
     </div>
+</body>
+</html>
