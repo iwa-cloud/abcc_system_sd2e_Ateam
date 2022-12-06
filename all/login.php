@@ -3,7 +3,7 @@
 
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<title>ログイン試作2</title>
+<title>ログイン</title>
 <style>
 </style>
 <script>

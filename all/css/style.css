@@ -27,8 +27,8 @@
 
 .itiran-photo-size{
     height:340px;
-    width:340px;
-    object-fit: cover;
+    width:auto;
+    object-fit: contain;
     flex-basis: 100%;
     vertical-align: bottom;
 }
@@ -68,6 +68,7 @@
 width: 500px;
 height: 500px;
 margin-top: 10%;
+object-fit: contain;
 }
 
 
