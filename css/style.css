@@ -96,9 +96,8 @@ object-fit: contain;
     color: #ffcf32; /* イエローカラー 自由に設定化 */
 }
 
-.nav-link:hover {
-    
-    background: #000;
+.nav-link:hover  {
+    opacity: 0.5;
 }
 
 .star5_rating[data-rate="5"]:after{ width: 100%; } /* 星5 */
