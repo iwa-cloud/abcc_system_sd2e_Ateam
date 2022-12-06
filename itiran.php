@@ -74,30 +74,30 @@ session_start();
                     </a>
                 </ul>
                 <form role="search">
-                    
+
                     <a class="nav-link" href="./ka-to.php">
                         <img src="./img/カート.png" width="80" height="30" class="img-fluid">
                     </a>
-                    
+
                 </form>
             </div>
         </div>
     </nav>
 
-    
+
     <div class="container-fluid">
         <div class="row">
-            <div class="col-4">
+            <div class="col-sm-4 col-xs-12">
                 <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-                    <img class="card-img-top itiran-photo-size" src="./img/ゲーミングキーボード1.png">
-                    <div class="card-body">
-                        <form action="./syosai.php" method="post" name="a_form1">
-                            <input type="hidden" name="device" value="1">
-                            <a href="javascript:a_form1.submit();" style="text-decoration:none;">
+                    <form action="./syosai.php" method="post" name="a_form1">
+                        <input type="hidden" name="device" value="1">
+                        <a href="javascript:a_form1.submit();" style="text-decoration:none;">
+                            <img class="card-img-top itiran-photo-size" src="./img/ゲーミングキーボード1.png">
+                            <div class="card-body">
                                 <p class="card-title text-height" style="flex-grow: 1;">
                                     <?php
                                     echo $deviceNamesArr[0];
-                                    
+
                                     //確認用
                                     // echo $_SESSION['cart_id'];
                                     ?>
@@ -113,18 +113,18 @@ session_start();
                                     echo $devicePriceArr[0];
                                     ?>
                                 </p>
-                            </a>
-                        </form>
-                    </div>
+                            </div>
+                        </a>
+                    </form>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-sm-4 col-xs-12">
                 <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-                    <img class="card-img-top itiran-photo-size" src="./img/ゲーミングキーボード2.png">
-                    <div class="card-body">
-                        <form action="./syosai.php" method="post" name="a_form2">
-                            <input type="hidden" name="device" value="2">
-                            <a href="javascript:a_form2.submit();" style="text-decoration:none;">
+                    <form action="./syosai.php" method="post" name="a_form2">
+                        <input type="hidden" name="device" value="2">
+                        <a href="javascript:a_form2.submit();" style="text-decoration:none;">
+                            <img class="card-img-top itiran-photo-size" src="./img/ゲーミングキーボード2.png">
+                            <div class="card-body">
                                 <p class="card-title text-height">
                                     <?php
                                     echo $deviceNamesArr[1];
@@ -141,18 +141,18 @@ session_start();
                                     echo $devicePriceArr[1];
                                     ?>
                                 </p>
-                            </a>
-                        </form>
-                    </div>
+                            </div>
+                        </a>
+                    </form>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-sm-4 col-xs-12">
                 <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-                    <img class="card-img-top itiran-photo-size" src="./img/ゲーミングキーボード3.png">
-                    <div class="card-body">
-                        <form action="./syosai.php" method="post" name="a_form3">
-                            <input type="hidden" name="device" value="3">
-                            <a href="javascript:a_form3.submit();" style="text-decoration:none;">
+                    <form action="./syosai.php" method="post" name="a_form3">
+                        <input type="hidden" name="device" value="3">
+                        <a href="javascript:a_form3.submit();" style="text-decoration:none;">
+                            <img class="card-img-top itiran-photo-size" src="./img/ゲーミングキーボード3.png">
+                            <div class="card-body">
                                 <p class="card-title text-height">
                                     <?php
                                     echo $deviceNamesArr[2];
@@ -169,18 +169,18 @@ session_start();
                                     echo $devicePriceArr[2];
                                     ?>
                                 </p>
-                            </a>
-                        </form>
-                    </div>
+                            </div>
+                        </a>
+                    </form>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-sm-4 col-xs-12">
                 <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-                    <img class="card-img-top itiran-photo-size" src="./img/ゲーミングヘッドフォン1.png">
-                    <div class="card-body">
-                        <form action="./syosai.php" method="post" name="a_form4">
-                            <input type="hidden" name="device" value="4">
-                            <a href="javascript:a_form4.submit();" style="text-decoration:none;">
+                    <form action="./syosai.php" method="post" name="a_form4">
+                        <input type="hidden" name="device" value="4">
+                        <a href="javascript:a_form4.submit();" style="text-decoration:none;">
+                            <img class="card-img-top itiran-photo-size" src="./img/ゲーミングヘッドフォン1.png">
+                            <div class="card-body">
                                 <p class="card-title text-height">
                                     <?php
                                     echo $deviceNamesArr[3];
@@ -197,18 +197,18 @@ session_start();
                                     echo $devicePriceArr[3];
                                     ?>
                                 </p>
-                            </a>
-                        </form>
-                    </div>
+                            </div>
+                        </a>
+                    </form>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-sm-4 col-xs-12">
                 <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-                    <img class="card-img-top itiran-photo-size" src="./img/ゲーミングヘッドフォン2.png">
-                    <div class="card-body">
-                        <form action="./syosai.php" method="post" name="a_form5">
-                            <input type="hidden" name="device" value="5">
-                            <a href="javascript:a_form5.submit();" style="text-decoration:none;">
+                    <form action="./syosai.php" method="post" name="a_form5">
+                        <input type="hidden" name="device" value="5">
+                        <a href="javascript:a_form5.submit();" style="text-decoration:none;">
+                            <img class="card-img-top itiran-photo-size" src="./img/ゲーミングヘッドフォン2.png">
+                            <div class="card-body">
                                 <p class="card-title text-height">
                                     <?php
                                     echo $deviceNamesArr[4];
@@ -225,18 +225,18 @@ session_start();
                                     echo $devicePriceArr[4];
                                     ?>
                                 </p>
-                            </a>
-                        </form>
-                    </div>
+                            </div>
+                        </a>
+                    </form>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-sm-4 col-xs-12">
                 <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-                    <img class="card-img-top itiran-photo-size" src="./img/ゲーミングヘッドフォン3.png">
-                    <div class="card-body">
-                        <form action="./syosai.php" method="post" name="a_form6">
-                            <input type="hidden" name="device" value="6">
-                            <a href="javascript:a_form6.submit();" style="text-decoration:none;">
+                    <form action="./syosai.php" method="post" name="a_form6">
+                        <input type="hidden" name="device" value="6">
+                        <a href="javascript:a_form6.submit();" style="text-decoration:none;">
+                            <img class="card-img-top itiran-photo-size" src="./img/ゲーミングヘッドフォン3.png">
+                            <div class="card-body">
                                 <p class="card-title text-height">
                                     <?php
                                     echo $deviceNamesArr[5];
@@ -253,97 +253,97 @@ session_start();
                                     echo $devicePriceArr[5];
                                     ?>
                                 </p>
-                            </a>
-                        </form>
-                    </div>
+                        </a>
                 </div>
-            </div>
-            <div class="col-4">
-                <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-                    <img class="card-img-top itiran-photo-size" src="./img/ゲーミングマウス1.png">
-                    <div class="card-body">
-                        <form action="./syosai.php" method="post" name="a_form7">
-                            <input type="hidden" name="device" value="7">
-                            <a href="javascript:a_form7.submit();" style="text-decoration:none;">
-                                <p class="card-title text-height">
-                                    <?php
-                                    echo $deviceNamesArr[6];
-                                    ?>
-                                </p>
-                                <p>
-                                    <?php
-                                    echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValueArr[6] . '"></span>';
-                                    echo '<span style="margin-left: 10px;">' . $deviceEvaluationNumberArr[6] . '</span>';
-                                    ?>
-                                </p>
-                                <p class="text-danger">
-                                    <?php
-                                    echo $devicePriceArr[6];
-                                    ?>
-                                </p>
-                            </a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-                    <img class="card-img-top itiran-photo-size" src="./img/ゲーミングマウス2.png">
-                    <div class="card-body">
-                        <form action="./syosai.php" method="post" name="a_form8">
-                            <input type="hidden" name="device" value="8">
-                            <a href="javascript:a_form8.submit();" style="text-decoration:none;">
-                                <p class="card-title text-height">
-                                    <?php
-                                    echo $deviceNamesArr[7];
-                                    ?>
-                                </p>
-                                <p>
-                                    <?php
-                                    echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValueArr[7] . '"></span>';
-                                    echo '<span style="margin-left: 10px;">' . $deviceEvaluationNumberArr[7] . '</span>';
-                                    ?>
-                                </p>
-                                <p class="text-danger">
-                                    <?php
-                                    echo $devicePriceArr[7];
-                                    ?>
-                                </p>
-                            </a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
-                    <img class="card-img-top itiran-photo-size" src="./img/ゲーミングマウス3.png">
-                    <div class="card-body">
-                        <form action="./syosai.php" method="post" name="a_form9">
-                            <input type="hidden" name="device" value="9">
-                            <a href="javascript:a_form9.submit();" style="text-decoration:none;">
-                                <p class="card-title text-height">
-                                    <?php
-                                    echo $deviceNamesArr[8];
-                                    ?>
-                                </p>
-                                <p>
-                                    <?php
-                                    echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValueArr[8] . '"></span>';
-                                    echo '<span style="margin-left: 10px;">' . $deviceEvaluationNumberArr[8] . '</span>';
-                                    ?>
-                                </p>
-                                <p class="text-danger">
-                                    <?php
-                                    echo $devicePriceArr[8];
-                                    ?>
-                                </p>
-                            </a>
-                        </form>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <div class="col-sm-4 col-xs-12">
+            <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
+                <form action="./syosai.php" method="post" name="a_form7">
+                    <input type="hidden" name="device" value="7">
+                    <a href="javascript:a_form7.submit();" style="text-decoration:none;">
+                        <img class="card-img-top itiran-photo-size" src="./img/ゲーミングマウス1.png">
+                        <div class="card-body">
+                            <p class="card-title text-height">
+                                <?php
+                                echo $deviceNamesArr[6];
+                                ?>
+                            </p>
+                            <p>
+                                <?php
+                                echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValueArr[6] . '"></span>';
+                                echo '<span style="margin-left: 10px;">' . $deviceEvaluationNumberArr[6] . '</span>';
+                                ?>
+                            </p>
+                            <p class="text-danger">
+                                <?php
+                                echo $devicePriceArr[6];
+                                ?>
+                            </p>
+                        </div>
+                    </a>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12">
+            <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
+                <form action="./syosai.php" method="post" name="a_form8">
+                    <input type="hidden" name="device" value="8">
+                    <a href="javascript:a_form8.submit();" style="text-decoration:none;">
+                        <img class="card-img-top itiran-photo-size" src="./img/ゲーミングマウス2.png">
+                        <div class="card-body">
+                            <p class="card-title text-height">
+                                <?php
+                                echo $deviceNamesArr[7];
+                                ?>
+                            </p>
+                            <p>
+                                <?php
+                                echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValueArr[7] . '"></span>';
+                                echo '<span style="margin-left: 10px;">' . $deviceEvaluationNumberArr[7] . '</span>';
+                                ?>
+                            </p>
+                            <p class="text-danger">
+                                <?php
+                                echo $devicePriceArr[7];
+                                ?>
+                            </p>
+                        </div>
+                    </a>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12">
+            <div class="card itiran-card-margin" style="height: 550px; margin-bottom:20px;">
+                <form action="./syosai.php" method="post" name="a_form9">
+                    <input type="hidden" name="device" value="9">
+                    <a href="javascript:a_form9.submit();" style="text-decoration:none;">
+                        <img class="card-img-top itiran-photo-size" src="./img/ゲーミングマウス3.png">
+                        <div class="card-body">
+                            <p class="card-title text-height">
+                                <?php
+                                echo $deviceNamesArr[8];
+                                ?>
+                            </p>
+                            <p>
+                                <?php
+                                echo '<span class="star5_rating" data-rate="' . $deviceEvaluationValueArr[8] . '"></span>';
+                                echo '<span style="margin-left: 10px;">' . $deviceEvaluationNumberArr[8] . '</span>';
+                                ?>
+                            </p>
+                            <p class="text-danger">
+                                <?php
+                                echo $devicePriceArr[8];
+                                ?>
+                            </p>
+                        </div>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
 </html>
