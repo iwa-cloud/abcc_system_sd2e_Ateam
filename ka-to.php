@@ -19,10 +19,6 @@ session_start();
 
 <body>
     <?php
-    // session_start();
-    // $syosai = $_SESSION['syosai'];
-    // $syosai = $_POST['device'];
-    // echo "<h1>".$syosai."</h1>";
     require_once './DBManager.php';
     $dbmng = new DBManager();
     $deviceInfomationAll = $dbmng->deviceSearchAll();
@@ -59,60 +55,40 @@ session_start();
         //indexを格納
         $device_id_num = (int)$_POST['device_id'] - 1;
         //セッションの中に同じ商品idがあるか確認
-        // $flag = false;
         $seArr = [];
         if (count($_SESSION['devices']) != 0) {
             $seArr = $_SESSION['devices'];
         }
-        // $flag = in_array($device_id_num, $seArr, true);
-        // $str = $device_id_num;
-        // echo strlen($device_id_num) . "\n";
-        // echo gettype($device_id_num) . "\n";
-        // echo $str . "\n";
-        // echo "<p>yeah" . $seArr[count($seArr) - 1] . "count(" . count($_SESSION['devices']) . ") " . $device_id_num . " " . $flag . " " . $_SESSION['cart_id'] . "yeah</p>";
-        // var_dump($_SESSION['devices']);
 
         //初回
         if (count($seArr) == 0) {
             //初めて
             $str1 = $device_id_num + 1;
             $str2 = $_SESSION['cart_id'];
-            // echo "<p>" . $str1 . " " . $str2 . "</p>";
             $hoge = $dbmng->deviceInsert($str1, $str2);
-            // $hoge2 = $dbmng->test();
-            // echo "<p>値段" . $hoge2[0]['default_price'] . "</p>";
 
             //index番号を格納
             $seArr[0] = $device_id_num;
-            // echo "<p>first</p>";
         } else {
             //初めてその商品を追加したか
             if (in_array($device_id_num, $seArr, true) === false) {
                 //初めての商品
                 $str1 = $device_id_num + 1;
                 $str2 = $_SESSION['cart_id'];
-                // echo "<p>" . $str1 . " " . $str2 . "</p>";
                 $hoge = $dbmng->deviceInsert($str1, $str2);
 
                 //index番号を格納
                 $seArr[count($seArr)] = $device_id_num;
-                // echo "<p>false</p>";
             } else {
                 //二回目以降
                 $str1 = $device_id_num + 1;
                 $str2 = $_SESSION['cart_id'];
                 $hoge = $dbmng->devicePuls($str1, $str2);
-                // echo "<p>true</p>";
             }
         }
 
 
         $_POST['device_id'] = null;
-
-        // echo "<p>yeah" . $seArr . " " . "yeah</p>";
-        // var_dump($seArr);
-        // $_SESSION['devices'][count($_SESSION['devices'])] = 2;
-        // echo "<h1>".$_SESSION['devices'][count($_SESSION['devices'])]."</h1>";
 
         $_SESSION['devices'] = $seArr;
 
@@ -123,8 +99,6 @@ session_start();
         unset($_SESSION['devices'][$index]);
         $_SESSION['devices'] = array_values($_SESSION['devices']);
         $_POST['deleteDevice'] = null;
-        //   $_POST['device_id'] = null;
-        //   header('Location: ./ka-to.php');
     }
 
     //該当するカートの情報を配列に格納
