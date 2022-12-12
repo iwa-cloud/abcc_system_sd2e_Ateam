@@ -137,6 +137,7 @@ class DBManager
         $result = 0;
         foreach ($ans as $row) {
             $result = $row['quantity'];
+            exit;
         }
         return $result;
     }
@@ -196,6 +197,7 @@ class DBManager
     public function dateUpdate($user_id, $cart_id)
     {
         $pdo = $this->dbConnect();
+        // UPDATE cart SET buy_date = CURDATE() WHERE user_id = '2M5TSmb' AND cart_id = '0000007';
         $sql = "UPDATE cart SET buy_date = CURDATE() WHERE user_id = ? AND cart_id = ?";
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1, $user_id, PDO::PARAM_STR);

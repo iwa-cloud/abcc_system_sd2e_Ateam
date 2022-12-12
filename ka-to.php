@@ -95,9 +95,15 @@ session_start();
         //カート画面の商品の削除ボタンを押した場合
     } else if (isset($_POST['deleteDevice'])) {
         $index = array_search($_POST['deleteDevice'], $_SESSION['devices']);
-        $dbmng->deviceMinus($_POST['deleteDevice'] + 1, $_SESSION['cart_id']);
-        unset($_SESSION['devices'][$index]);
-        $_SESSION['devices'] = array_values($_SESSION['devices']);
+        $hoge = $dbmng->deviceMinus($_POST['deleteDevice'] + 1, $_SESSION['cart_id']);
+        $device_arr1 = $dbmng->cartGetDevice($_SESSION['cart_id']);
+        $device_arr2 = [];
+        foreach ($device_arr1 as $row) {
+            $device_arr2[] = $row['device_id'] - 1;
+        }
+        $_SESSION['devices'] = $device_arr2;
+        // unset($_SESSION['devices'][$index]);
+        // $_SESSION['devices'] = array_values($_SESSION['devices']);
         $_POST['deleteDevice'] = null;
     }
 
@@ -110,6 +116,7 @@ session_start();
         $cart_device_id[] = $row['device_id'] - 1;
         $cart_quantity[] = $row['quantity'];
     }
+    // var_dump($_SESSION['devices']);
 
     ?>
 
