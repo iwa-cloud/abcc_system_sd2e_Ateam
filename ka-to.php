@@ -190,7 +190,7 @@ session_start();
                 echo '<span class="text-black">';
                 echo "数量：";
                 // echo $cart_quantity[$i];
-                echo $dbmng->deviceQuantitySearch($cart_device_id[$i] + 1,$_SESSION['cart_id']);
+                echo $hoge = $dbmng->deviceQuantitySearch($cart_device_id[$i] + 1,$_SESSION['cart_id']);
                 echo '</span>';
                 echo '<span>';
                 echo '<form action="./ka-to.php" method="post">';
