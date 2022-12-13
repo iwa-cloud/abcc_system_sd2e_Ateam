@@ -137,7 +137,6 @@ class DBManager
         $result = 0;
         foreach ($ans as $row) {
             $result = $row['quantity'];
-            exit;
         }
         return $result;
     }
