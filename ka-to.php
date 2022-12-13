@@ -86,6 +86,7 @@ session_start();
                 $hoge = $dbmng->devicePuls($str1, $str2);
             }
         }
+        //ここまでおｋ
 
 
         $_POST['device_id'] = null;
@@ -107,6 +108,7 @@ session_start();
         $_POST['deleteDevice'] = null;
     }
 
+    echo $_SESSION['cart_id']."<br>";
     //該当するカートの情報を配列に格納
     $cartDeviceArr = $dbmng->cartDeviceSearch($_SESSION['cart_id']);
     $cart_device_id;
@@ -116,7 +118,8 @@ session_start();
         $cart_device_id[] = $row['device_id'] - 1;
         $cart_quantity[] = $row['quantity'];
     }
-    // var_dump($_SESSION['devices']);
+    echo $_SESSION['devices']."<br>";
+    var_dump($_SESSION['devices']);
 
     ?>
 
@@ -187,7 +190,7 @@ session_start();
                 echo '<span class="text-black">';
                 echo "数量：";
                 // echo $cart_quantity[$i];
-                echo $hoge = $dbmng->deviceQuantitySearch($cart_device_id[$i] + 1,$_SESSION['cart_id']);
+                echo $dbmng->deviceQuantitySearch($cart_device_id[$i] + 1,$_SESSION['cart_id']);
                 echo '</span>';
                 echo '<span>';
                 echo '<form action="./ka-to.php" method="post">';
