@@ -7,7 +7,7 @@ session_start();
 <head>
     <link rel="stylesheet" href="./css/style.css">
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title>カート試作</title>
+    <title>カート</title>
     <style>
     </style>
     <script type="text/javascript">
